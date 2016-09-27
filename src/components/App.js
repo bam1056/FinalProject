@@ -3,9 +3,31 @@ import Header from './Header'
 import { Footer, Breadcrumbs } from 'rebass'
 
 class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      userName: '',
+      userId: '',
+      currentTask: {}
+    }
+  }
   static propTypes = {
     children: React.PropTypes.object.isRequired
   }
+
+  setUser = (id, name) => {
+    this.setState({
+      userName: name,
+      userId: id
+    })
+  }
+
+  getAssignedTask = (taskList) => {
+    this.setState({
+      currentTask: taskList[0]
+    })
+  }
+
   render () {
     const style = {
       backgroundColor: 'black',
@@ -23,13 +45,13 @@ class App extends Component {
     }
     return <div>
       <Header />
-      {this.props.children}
+      {this.props.children && React.cloneElement(this.props.children, {setUser: this.setUser, userName: this.state.userName, userId: this.state.userId, getAssignedTask: this.getAssignedTask, currentTask: this.state.currentTask})}
       <Footer
         style={style}
         >
         <Breadcrumbs
           links={[
-            {children: 'Add Task', href: '/todolist'}, {children: 'Calendar', href: '/calendar'}, {children: 'Sign Out', href: '#!'}]}
+            {children: 'About Us', href: '/about'}, {children: 'Contact Us', href: '/contact'}, {children: 'FAQs', href: '#!'}]}
         />
       </Footer>
     </div>

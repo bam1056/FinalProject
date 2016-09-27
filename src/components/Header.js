@@ -48,8 +48,8 @@ class Header extends Component {
           onMouseLeave={this.dismissDropDown}
           >
           <NavItem to='/' is={Link} children='Home' />
-          <NavItem to='/work' is={Link} children='Main' />
-          <NavItem to='/tasks' is={Link} children='Current Task' />
+          <NavItem to='/get-task' is={Link} children='AskForTask' />
+          <NavItem to='/currentTask' is={Link} children='Current Task' />
           <NavItem to='/todolist' is={Link} children='ToDos' />
           <NavItem to='/profile' is={Link} children='Profile' />
         </DropdownMenu>
