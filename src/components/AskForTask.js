@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Select, Button } from 'rebass'
 import { browserHistory } from 'react-router'
+import ErrorModal from './ErrorModal'
 import { Box } from 'reflexbox'
 
 class AskForTask extends Component {
@@ -26,8 +27,14 @@ class AskForTask extends Component {
     .then(res => res.json())
     .then(data => {
       this.props.getAssignedTask(data)
-      browserHistory.push('/currentTask')
+      console.log(data)
+      if (data.length === 0) this.toggleErrorModal(true)
+      else browserHistory.push('/currentTask')
     })
+  }
+
+  toggleErrorModal = (bool) => {
+    this.setState({ error: bool })
   }
 
   render () {
@@ -88,6 +95,9 @@ class AskForTask extends Component {
             onClick={this.getTask}
             />
         </Box>
+        <ErrorModal
+          userName={this.props.userName}
+          toggleErrorModal={this.toggleErrorModal} error={this.state.error} />
       </div>
     </div>
   }

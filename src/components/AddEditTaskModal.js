@@ -18,7 +18,8 @@ class AddEditTaskModal extends Component {
     this.state = {
       title: '',
       description: '',
-      estimated_duration: 0
+      estimated_duration: 0,
+      deadline: ''
     }
   }
 
@@ -58,8 +59,8 @@ class AddEditTaskModal extends Component {
   }
 
   addTask = () => {
-    const { title, description, user_id, estimated_duration } = this.state
-    console.log('ADD TASK', title, description, user_id, estimated_duration)
+    const { title, description, estimated_duration } = this.state
+    console.log('ADD TASK', title, description, this.props.userId, estimated_duration)
     window.fetch(' https://sleepy-mountain-24094.herokuapp.com/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

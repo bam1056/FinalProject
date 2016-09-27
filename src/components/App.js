@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       userName: window.sessionStorage.getItem('userName'),
       userId: JSON.parse(window.sessionStorage.getItem('userId')),
-      currentTask: {}
+      currentTask: window.sessionStorage.currentTaskList ? JSON.parse(window.sessionStorage.getItem('currentTaskList'))[0] : {}
     }
   }
   static propTypes = {
@@ -25,6 +25,7 @@ class App extends Component {
   }
 
   getAssignedTask = (taskList) => {
+    window.sessionStorage.setItem('currentTaskList', JSON.stringify(taskList))
     this.setState({
       currentTask: taskList[0]
     })
