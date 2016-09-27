@@ -6,8 +6,8 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      userName: '',
-      userId: '',
+      userName: window.sessionStorage.getItem('userName'),
+      userId: JSON.parse(window.sessionStorage.getItem('userId')),
       currentTask: {}
     }
   }
@@ -16,6 +16,8 @@ class App extends Component {
   }
 
   setUser = (id, name) => {
+    window.sessionStorage.setItem('userId', id)
+    window.sessionStorage.setItem('userName', name)
     this.setState({
       userName: name,
       userId: id

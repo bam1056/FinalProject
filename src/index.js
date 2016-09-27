@@ -4,6 +4,7 @@ import App from './components/App'
 import Home from './components/Home'
 import AskForTask from './components/AskForTask'
 import CurrentTask from './components/CurrentTask'
+import Tasklist from './components/Tasklist'
 import { Router, Route, browserHistory } from 'react-router'
 import './styles/screen.sass'
 
@@ -13,6 +14,7 @@ const router = (
       <Route path='/' component={Home} />
       <Route path='/get-task' component={AskForTask} />
       <Route path='/currentTask' component={CurrentTask} />
+      <Route path='/todolist' component={Tasklist} />
     </Route>
   </Router>
 )

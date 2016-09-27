@@ -3,6 +3,7 @@ import SignInModal from './SignInModal'
 import SignUpModal from './SignUpModal'
 import { Flex } from 'reflexbox'
 import { Button, Heading, Text } from 'rebass'
+import { browserHistory } from 'react-router'
 
 class Home extends Component {
   constructor () {
@@ -14,7 +15,9 @@ class Home extends Component {
       userId: ''
     }
   }
-
+  componentWillMount () {
+    if (window.sessionStorage.userName) browserHistory.push('/get-task')
+  }
   static propTypes = {
     userName: React.PropTypes.string,
     userId: React.PropTypes.number,
@@ -30,13 +33,6 @@ class Home extends Component {
       default: console.error('Error In Modal Tasks')
     }
   }
-
-  // setUser = (id, name) => {
-  //   this.setState({
-  //     userName: name,
-  //     userId: id
-  //   })
-  // }
 
   render () {
     const homeStyle = {
@@ -67,17 +63,17 @@ class Home extends Component {
           flexColumn
         >
           <h1 style={h1Style}>StreamLine</h1>
-          <h6 style={h1Style}>Optimize Your Time</h6>
+          <h6 style={h1Style}>Manage Your Free Time</h6>
           <div style={trainStyle} />
         </Flex>
       </div>
       <div className='signIn'>
         <Heading
-          children='SignIn or SignUp'
+          children='Welcome to StreamLine...'
           style={{textAlign: 'center', margin: '10px auto'}} />
         <hr />
         <Text style={{margin: '0 25px', textAlign: 'center'}}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          At StreamLine, we know your time is valuable. Let us help you manage it.
         </Text>
         <Flex
           align='center'
@@ -92,6 +88,7 @@ class Home extends Component {
           >
             Sign In
           </Button>
+          OR
           <Button
             backgroundColor='black'
             color='white'

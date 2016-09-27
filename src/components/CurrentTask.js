@@ -57,7 +57,7 @@ class CurrentTask extends Component {
       justifyContent: 'center'
     }
     return <div className='task'>
-      <div className='task-heading'>
+      <div className='task-heading' style={{textAlign: 'center'}}>
         <h1 style={{'marginTop': '60px'}}>
           {this.props.currentTask.title}
         </h1>
