@@ -3,6 +3,7 @@ import { Panel, PanelHeader, PanelFooter, Text, ButtonCircle } from 'rebass'
 import { Flex, Box } from 'reflexbox'
 import Icon from 'react-geomicons'
 import AddEditTaskModal from './AddEditTaskModal'
+import FontAwesome from 'react-fontawesome'
 
 class Tasklist extends Component {
   constructor () {
@@ -81,7 +82,8 @@ class Tasklist extends Component {
     const taskPanelStyle = {
       overflowY: 'auto',
       height: '60vh',
-      margin: '0 auto'
+      margin: '0 auto',
+      width: '300px'
     }
 
     item = tasks.map((task, i) => {
@@ -102,6 +104,7 @@ class Tasklist extends Component {
               justify='space-between'
               >
               <ButtonCircle
+                style={{marginRight: '3px'}}
                 color='secondary'
                 backgroundColor='black'
                 onClick={() => this.editTask(task)}
@@ -118,7 +121,7 @@ class Tasklist extends Component {
             </Box>
           </Flex>
         </PanelHeader>
-        <Text>Task Description: {task.description}</Text>
+        <Text>{task.description}</Text>
         <PanelFooter>
           Estimated Time: {task.estimated_duration}min
         </PanelFooter>
@@ -129,16 +132,14 @@ class Tasklist extends Component {
         flex
         align='center'
         justify='space-between'
+        style={{width: '250px'}}
         col={10}
         >
         <h1> TASKS </h1>
-        <ButtonCircle
+        <FontAwesome
+          className='fa-plus-circle' name='plus-circle' size='2x' style={{backgroundColor: 'white', color: 'black'}}
           onClick={() => this.addTask()}
-          title='Add'
-          backgroundColor='black'
-          >
-          <Icon name='check' />
-        </ButtonCircle>
+        />
       </Box>
       <div className='task-panels' style={taskPanelStyle}>
         {item}

@@ -46,15 +46,7 @@ class Home extends Component {
       textShadow: '2px 2px 2px white',
       margin: '5px 0'
     }
-    const trainStyle = {
-      backgroundImage: `url(http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/3d-transparent-glass-icons-transport-travel/036494-3d-transparent-glass-icon-transport-travel-transportation-train4.png)`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      height: '100px',
-      width: '100px',
-      transform: 'rotateY(180deg)'
-    }
+
     return <div className='landing'>
       <div className='home' style={homeStyle}>
         <Flex
@@ -62,9 +54,9 @@ class Home extends Component {
           justify='center'
           flexColumn
         >
-          <h1 style={h1Style}>StreamLine</h1>
-          <h6 style={h1Style}>Manage Your Free Time</h6>
-          <div style={trainStyle} />
+          <h1 style={h1Style} className='welcome'>Welcome To StreamLine</h1>
+          <h6 style={h1Style} className='manage'>Manage Your Free Time</h6>
+          <div className='train' />
         </Flex>
       </div>
       <div className='signIn'>
@@ -85,6 +77,7 @@ class Home extends Component {
             color='white'
             style={{margin: '10px'}}
             onClick={() => this.setState({signIn: true})}
+            onTouchStart={() => this.setState({signIn: true})}
           >
             Sign In
           </Button>

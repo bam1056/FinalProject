@@ -72,7 +72,7 @@ class SignInModal extends Component {
             name='Username'
             onChange={this.setName}
             />
-          <Button onClick={this.handleClick}>
+          <Button onTouchStart={this.handleClick} onClick={this.handleClick}>
             Sign In
           </Button>
         </Panel>

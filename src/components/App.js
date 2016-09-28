@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Header'
-import { Footer, Breadcrumbs } from 'rebass'
+import { Footer, Breadcrumbs, Text } from 'rebass'
 
 class App extends Component {
   constructor () {
@@ -36,6 +36,7 @@ class App extends Component {
       backgroundColor: 'black',
       color: 'white',
       display: 'flex',
+      flexDirection: 'column',
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
@@ -56,6 +57,10 @@ class App extends Component {
           links={[
             {children: 'About Us', href: '/about'}, {children: 'Contact Us', href: '/contact'}, {children: 'FAQs', href: '#!'}]}
         />
+        <Text>&copy;Copyright Macy/Kebert Inc.</Text>
+        {/* <Text>
+          Transport graphic by <a href="http://www.flaticon.com/authors/freepik">Freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
+        </Text> */}
       </Footer>
     </div>
   }

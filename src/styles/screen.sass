@@ -15,3 +15,27 @@ a
 
 .NavItem:active
   background-color: lightgray
+
+.train
+  width: 200px
+  height: 200px
+  margin-left: 30px
+  background-image: url('../components/Logomakr_34pimb.png')
+  background-position: center
+  background-repeat: no-repeat
+  background-size: contain
+  transition: all 0.5s linear
+
+@media(max-width: 550px)
+  .train
+    background-image: url('../components/Logomakr_8oR7A2.png')
+
+@keyframes fadeIn
+  from { opacity: 0 }
+  to { opacity: 1 }
+
+.welcome
+  animation: fadeIn 2s
+
+.manage
+  animation: fadeIn 6s
