@@ -1,0 +1,76 @@
+{
+  "staff": [
+    {
+      "name": "Alan Kebert",
+      "title": "Lead Ruby Engineer",
+      "quote": "I like things.",
+      "skills": [
+        "Ruby",
+        "HTML5",
+        "CSS3",
+        "Bootstrap"
+      ],
+      "photoUrl": "http://media.gettyimages.com/photos/person-getting-wind-blown-in-the-face-picture-id104305183"
+    },
+    {
+      "name": "Brett Macy",
+      "title": "Lead Frontend Engineer",
+      "quote": "I made French Fries.",
+      "skills": [
+        "Javascript",
+        "HTML5",
+        "CSS3",
+        "React"
+      ],
+      "photoUrl": "http://media.gettyimages.com/photos/shouting-mixed-race-businessman-picture-id136801997"
+    },
+    {
+      "name": "Jason Perry",
+      "title": "Senior Javascript Engineer",
+      "quote": "Everyone needs a hug.",
+      "skills": [
+        "Javascript",
+        "Ruby",
+        "HTML5",
+        "CSS3"
+      ],
+      "photoUrl": "http://media.gettyimages.com/photos/dont-worry-its-not-contagious-picture-id488027923"
+    },
+    {
+      "name": "Gavin Stark",
+      "title": "Senior Ruby Engineer",
+      "quote": "Why are we here?",
+      "skills": [
+        "Ruby",
+        "Rails",
+        "HTML5",
+        "Rocket Science"
+      ],
+      "photoUrl": "http://media.gettyimages.com/photos/close-up-portrait-of-confident-man-picture-id483780293"
+    },
+    {
+      "name": "Mark Dewey",
+      "title": "Creative Consultant",
+      "quote": "I enjoy hacky sack!",
+      "skills": [
+        "Javascript",
+        ".NET",
+        "HTML5",
+        "C#"
+      ],
+      "photoUrl": "http://media.gettyimages.com/photos/mashed-face-picture-id184857941"
+    },
+    {
+      "name": "Toni Warren",
+      "title": "Director of Marketing",
+      "quote": "Hear me roar.",
+      "skills": [
+        "Trello",
+        "Twitter",
+        "Community Outreach",
+        "Marketing"
+      ],
+      "photoUrl": "http://media.gettyimages.com/photos/excited-young-adult-portrait-picture-id165831171"
+    }
+  ]
+}

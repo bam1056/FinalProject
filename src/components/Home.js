@@ -76,8 +76,7 @@ class Home extends Component {
             backgroundColor='black'
             color='white'
             style={{margin: '10px'}}
-            onClick={() => this.setState({signIn: true})}
-            onTouchStart={() => this.setState({signIn: true})}
+            onClick={() => this.setState({signIn: true}, console.log('click', this.state.signIn))}
           >
             Sign In
           </Button>

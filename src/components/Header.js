@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Dropdown, DropdownMenu, Button, NavItem, Arrow, Base } from 'rebass'
 import { Link, browserHistory } from 'react-router'
+import FontAwesome from 'react-fontawesome'
 
 class Header extends Component {
   constructor () {
@@ -31,6 +32,7 @@ class Header extends Component {
     return <Base
       backgroundColor='black'
       color='white'
+      style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}
       >
       <Dropdown>
         <Button
@@ -55,6 +57,10 @@ class Header extends Component {
           <NavItem to='/about' is={Link} children='About Us' />
         </DropdownMenu>
       </Dropdown>
+      <FontAwesome
+        className='fa fa-cog' name='cog' style={{backgroundColor: 'black', color: 'white', marginRight: '15px'}} onClick={() =>
+        browserHistory.push('/settings')}
+      />
     </Base>
   }
 }

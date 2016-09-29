@@ -46,7 +46,7 @@ class AskForTask extends Component {
       backgroundImage: `url(http://il5.picdn.net/shutterstock/videos/14941777/thumb/1.jpg)`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
-      paddingBottom: '200px'
+      paddingBottom: '350px'
     }
 
     const selectStyle = {

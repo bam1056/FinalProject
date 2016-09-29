@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
-import { Box } from 'reflexbox'
-import { Text } from 'rebass'
+import { Flex, Box } from 'reflexbox'
+import staff from './staff.json'
+import { Avatar, Heading, Text } from 'rebass'
 
 class About extends Component {
   render () {
-    return <div>
-      <Box flex flexColumn align='center' justify='center'>
-        <Text>
-          Thank you for your interest in StreamLine.
-          We are a young company, interested in improving our customers lives through programming.
-        </Text>
-        <Text>
-          What are you doing that requires our product?
-        </Text>
+    const staffCards = staff.staff.map((staff, i) => {
+      return <Box flex flexColumn key={i} style={{width: '30%', margin: '5px 5px'}}>
+        <Box flexColumn flex align='center' justify='center'>
+          <Avatar circle size={70} src={staff.photoUrl} />
+          <Heading>{staff.name}</Heading>
+        </Box>
+        <Text>Personal Quote: {staff.quote}</Text>
+        <Text>Skills:<ul>{staff.skills.map((skill, j) => <li key={j}>{skill}</li>)}</ul></Text>
       </Box>
+    })
+    return <div>
+      <Flex flex wrap align='center' justify='center'>
+        {staffCards}
+      </Flex>
     </div>
   }
 }

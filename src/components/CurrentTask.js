@@ -4,9 +4,9 @@ class CurrentTask extends Component {
   constructor () {
     super()
     this.state = {
-      seconds: 0,
-      minutes: 0,
-      hours: 0,
+      seconds: '00',
+      minutes: '00',
+      hours: '00',
       days: 0,
       total: 0,
       clockTime: 0
@@ -26,7 +26,7 @@ class CurrentTask extends Component {
 
   stopTimer = (e) => {
     e.persist()
-    e.target.parentElement.childNodes[1].disabled = false
+    e.target.parentElement.childNodes[0].disabled = false
     clearInterval(this.interval)
   }
 
@@ -36,16 +36,19 @@ class CurrentTask extends Component {
 
   getTimeRemaining = (endtime) => {
     let t = endtime - Date.parse(new Date())
-    var seconds = Math.floor((t / 1000) % 60)
-    var minutes = Math.floor((t / 1000 / 60) % 60)
-    var hours = Math.floor((t / (1000 * 60 * 60)) % 24)
-    var days = Math.floor(t / (1000 * 60 * 60 * 24))
+    let seconds = Math.floor((t / 1000) % 60).toString()
+    let minutes = Math.floor((t / 1000 / 60) % 60)
+    let hours = Math.floor((t / (1000 * 60 * 60)) % 24)
+    let days = Math.floor(t / (1000 * 60 * 60 * 24))
+    let newS = ('0' + seconds).slice(-2)
+    let newM = ('0' + minutes).slice(-2)
+    let newH = ('0' + hours).slice(-2)
     this.setState({
       total: t,
       days: days,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds
+      hours: newH,
+      minutes: newM,
+      seconds: newS
     })
   }
 

@@ -49,7 +49,8 @@ class SignInModal extends Component {
   }
 
   render () {
-    return <div className='modal signIn'>
+    console.log(this.props.signIn)
+    return <div className='signIn'>
       <Overlay
         open={this.props.signIn}
         dark
