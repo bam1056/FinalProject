@@ -11,24 +11,26 @@ a
   text-decoration: none
 
 .NavItem:hover
-  background-color: gray
+  background-color: #006494
+  color: white !important
 
 .NavItem:active
-  background-color: lightgray
+  background-color: lighten(#006494, 10%)
 
 .train
-  width: 200px
-  height: 200px
+  width: 250px
+  height: 250px
   margin-left: 30px
-  background-image: url('../components/Logomakr_34pimb.png')
+  background-image: url('/src/components/StreamLine_v.svg')
   background-position: center
   background-repeat: no-repeat
   background-size: contain
+  opacity: .85
   transition: all 0.5s linear
 
-@media(max-width: 550px)
-  .train
-    background-image: url('../components/Logomakr_8oR7A2.png')
+// @media(max-width: 550px)
+//   .train
+//     background-image: url('../components/Logomakr_8oR7A2.png')
 
 @keyframes fadeIn
   from { opacity: 0 }

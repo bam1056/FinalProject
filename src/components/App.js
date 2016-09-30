@@ -33,7 +33,7 @@ class App extends Component {
 
   render () {
     const style = {
-      backgroundColor: 'black',
+      backgroundColor: '#006494',
       color: 'white',
       display: 'flex',
       flexDirection: 'column',

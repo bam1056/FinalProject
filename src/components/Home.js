@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import SignInModal from './SignInModal'
 import SignUpModal from './SignUpModal'
 import { Flex } from 'reflexbox'
-import { Button, Heading, Text } from 'rebass'
+import { Button, Heading, Text, Space, Block } from 'rebass'
 import { browserHistory } from 'react-router'
+import FontAwesome from 'react-fontawesome'
 
 class Home extends Component {
   constructor () {
@@ -17,6 +18,10 @@ class Home extends Component {
   }
   componentWillMount () {
     if (window.sessionStorage.userName) browserHistory.push('/get-task')
+  }
+  componentDidMount () {
+    const head = document.querySelector('.head1')
+    head.style.display = 'none'
   }
   static propTypes = {
     userName: React.PropTypes.string,
@@ -36,15 +41,17 @@ class Home extends Component {
 
   render () {
     const homeStyle = {
-      backgroundImage: `url('http://wallpapercave.com/wp/a1hexCn.jpg')`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
+      backgroundColor: '#006494',
       minHeight: `40vh`,
       minWidth: '100%'
     }
-    const h1Style = {
-      textShadow: '2px 2px 2px white',
-      margin: '5px 0'
+    const headingStyle = {
+      textAlign: 'center',
+      margin: '-100px auto 0 auto',
+      fontFamily: 'Raleway',
+      fontSize: '2.5em',
+      color: '#F9F2FC',
+      textShadow: '1px 1px 1px #006494'
     }
 
     return <div className='landing'>
@@ -54,40 +61,29 @@ class Home extends Component {
           justify='center'
           flexColumn
         >
-          <h1 style={h1Style} className='welcome'>Welcome To StreamLine</h1>
-          <h6 style={h1Style} className='manage'>Manage Your Free Time</h6>
+          {/* <h1 style={h1Style} className='welcome'>Welcome To StreamLine</h1>
+          <h6 style={h1Style} className='manage'>Manage Your Free Time</h6> */}
           <div className='train' />
         </Flex>
       </div>
       <div className='signIn'>
         <Heading
-          children='Welcome to StreamLine...'
-          style={{textAlign: 'center', margin: '10px auto'}} />
-        <hr />
-        <Text style={{margin: '0 25px', textAlign: 'center'}}>
+          children='Welcome to StreamLine'
+          style={headingStyle} />
+        <Text style={{margin: '100px 0 25px 0', textAlign: 'center', fontFamily: 'Roboto', fontSize: '1.25em'}}>
           At StreamLine, we know your time is valuable. Let us help you manage it.
         </Text>
-        <Flex
-          align='center'
-          justify='center'
-          flexColumn
-          >
-          <Button
-            backgroundColor='black'
-            color='white'
-            style={{margin: '10px'}}
-            onClick={() => this.setState({signIn: true}, console.log('click', this.state.signIn))}
-          >
-            Sign In
-          </Button>
-          OR
-          <Button
-            backgroundColor='black'
-            color='white'
-            style={{margin: '10px'}}
-            onClick={() => this.setState({signUp: true})}
-          >
-            Sign Up
+        <Flex justify='center' align='center'>
+          <Button onClick={() => window.location.assign('https://sleepy-mountain-24094.herokuapp.com/oauth2authorize')}>
+            <Flex align='center' justify='center'>
+              <FontAwesome
+                className='fa-google'
+                name='fa-google'
+                size='2x'
+                />
+              <Space x={2} />
+              Sign In With Google
+            </Flex>
           </Button>
         </Flex>
       </div>
