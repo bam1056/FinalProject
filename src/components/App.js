@@ -7,28 +7,27 @@ class App extends Component {
     super()
     this.state = {
       userName: window.sessionStorage.getItem('userName'),
-      userId: JSON.parse(window.sessionStorage.getItem('userId')),
-      currentTask: window.sessionStorage.currentTaskList ? JSON.parse(window.sessionStorage.getItem('currentTaskList'))[0] : {}
+      currentTask: window.sessionStorage.currentTaskList ? JSON.parse(window.sessionStorage.getItem('currentTaskList'))[0] : {},
+      allTasks: []
     }
   }
   static propTypes = {
     children: React.PropTypes.object.isRequired
   }
 
-  setUser = (id, name) => {
-    window.sessionStorage.setItem('userId', id)
+  setUser = (name) => {
     window.sessionStorage.setItem('userName', name)
     this.setState({
-      userName: name,
-      userId: id
+      userName: name
     })
   }
 
   getAssignedTask = (taskList) => {
     window.sessionStorage.setItem('currentTaskList', JSON.stringify(taskList))
     this.setState({
-      currentTask: taskList[0]
-    })
+      currentTask: taskList[0],
+      allTasks: taskList
+    }, () => console.log('getAssignedTask() in app', taskList))
   }
 
   render () {
@@ -49,7 +48,7 @@ class App extends Component {
     }
     return <div>
       <Header />
-      {this.props.children && React.cloneElement(this.props.children, {setUser: this.setUser, userName: this.state.userName, userId: this.state.userId, getAssignedTask: this.getAssignedTask, currentTask: this.state.currentTask})}
+      {this.props.children && React.cloneElement(this.props.children, {setUser: this.setUser, userName: this.state.userName, userId: this.state.userId, getAssignedTask: this.getAssignedTask, currentTask: this.state.currentTask, allTasks: this.state.allTasks})}
       <Footer
         style={style}
         >

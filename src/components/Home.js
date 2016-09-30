@@ -1,42 +1,56 @@
 import React, { Component } from 'react'
-import SignInModal from './SignInModal'
-import SignUpModal from './SignUpModal'
 import { Flex } from 'reflexbox'
-import { Button, Heading, Text, Space, Block } from 'rebass'
+import { Button, Heading, Text, Space } from 'rebass'
 import { browserHistory } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
 class Home extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       signIn: false,
       signUp: false,
       userName: '',
       userId: ''
     }
+    if (this.props.location.query.token) {
+      this.state.token = this.props.location.query.token
+      window.sessionStorage.setItem('token', this.props.location.query.token)
+      this.props.setUser(this.props.location.query.user_name)
+      console.log(this.state.token, this.props.userName)
+    }
   }
-  componentWillMount () {
-    if (window.sessionStorage.userName) browserHistory.push('/get-task')
-  }
-  componentDidMount () {
-    const head = document.querySelector('.head1')
-    head.style.display = 'none'
-  }
+
   static propTypes = {
     userName: React.PropTypes.string,
     userId: React.PropTypes.number,
-    setUser: React.PropTypes.func
+    setUser: React.PropTypes.func,
+    location: React.PropTypes.object
   }
 
-  toggleOverlay = (modal, bool) => {
-    switch (modal) {
-      case 'in': this.setState({signIn: false})
-        break
-      case 'up': this.setState({signUp: false})
-        break
-      default: console.error('Error In Modal Tasks')
-    }
+  componentDidMount () {
+    const head = document.querySelector('.head1')
+    head.style.display = 'none'
+    if (window.sessionStorage.token) browserHistory.push('/get-task')
+  }
+
+  componentWillUnmount () {
+    const head = document.querySelector('.head1')
+    head.style.display = 'block'
+  }
+
+  // toggleOverlay = (modal, bool) => {
+  //   switch (modal) {
+  //     case 'in': this.setState({signIn: false})
+  //       break
+  //     case 'up': this.setState({signUp: false})
+  //       break
+  //     default: console.error('Error In Modal Tasks')
+  //   }
+  // }
+
+  handleAuthorization = () => {
+    window.location.assign('https://sleepy-mountain-24094.herokuapp.com/oauth2authorize')
   }
 
   render () {
@@ -60,9 +74,7 @@ class Home extends Component {
           align='center'
           justify='center'
           flexColumn
-        >
-          {/* <h1 style={h1Style} className='welcome'>Welcome To StreamLine</h1>
-          <h6 style={h1Style} className='manage'>Manage Your Free Time</h6> */}
+          >
           <div className='train' />
         </Flex>
       </div>
@@ -70,11 +82,11 @@ class Home extends Component {
         <Heading
           children='Welcome to StreamLine'
           style={headingStyle} />
-        <Text style={{margin: '100px 0 25px 0', textAlign: 'center', fontFamily: 'Roboto', fontSize: '1.25em'}}>
+        <Text style={{margin: '100px 10px 25px 10px', textAlign: 'center', fontFamily: 'Roboto', fontSize: '1.25em'}}>
           At StreamLine, we know your time is valuable. Let us help you manage it.
         </Text>
         <Flex justify='center' align='center'>
-          <Button onClick={() => window.location.assign('https://sleepy-mountain-24094.herokuapp.com/oauth2authorize')}>
+          <Button className='auth-button' style={{marginTop: '25px', boxShadow: '2px 2px 2px #006498', backgroundColor: '#006494'}} onClick={this.handleAuthorization}>
             <Flex align='center' justify='center'>
               <FontAwesome
                 className='fa-google'
@@ -87,8 +99,6 @@ class Home extends Component {
           </Button>
         </Flex>
       </div>
-      <SignInModal setUser={this.props.setUser} signIn={this.state.signIn} toggleOverlay={this.toggleOverlay} />
-      <SignUpModal setUser={this.props.setUser} signUp={this.state.signUp} toggleOverlay={this.toggleOverlay} />
     </div>
   }
 }

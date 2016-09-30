@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { Button } from 'rebass'
+import { Flex } from 'reflexbox'
+import FontAwesome from 'react-fontawesome'
 
 class CurrentTask extends Component {
   constructor () {
@@ -13,7 +16,18 @@ class CurrentTask extends Component {
     }
   }
   static propTypes = {
-    currentTask: React.PropTypes.object
+    currentTask: React.PropTypes.object,
+    allTasks: React.PropTypes.array
+  }
+  componentDidMount () {
+    this.initializeTimer()
+  }
+
+  initializeTimer = () => {
+    let endtime = Date.parse(new Date()) + this.props.currentTask.estimated_duration * 60000
+    this.getTimeRemaining(endtime)
+    this.interval = setInterval(() => { this.getTimeRemaining(endtime) }, 1000)
+    this.setState({ clockTime: endtime })
   }
 
   startTimer = (e) => {
@@ -61,16 +75,32 @@ class CurrentTask extends Component {
     }
     return <div className='task'>
       <div className='task-heading' style={{textAlign: 'center'}}>
-        <h1 style={{'marginTop': '60px'}}>
+        <h1 style={{'marginTop': '60px', fontFamily: 'Raleway'}}>
           {this.props.currentTask.title}
         </h1>
       </div>
-      <h3 style={{textAlign: 'center'}}>{this.props.currentTask.description}</h3>
+      <h3 style={{textAlign: 'center', fontFamily: 'Roboto'}}>{this.props.currentTask.description}</h3>
       <div style={{textAlign: 'center'}}>{hours}:{minutes}:{seconds}</div>
       <div className='clock' style={clockStyle}>
-        <button onClick={this.startTimer}>Start Timer</button>
-        <button onClick={this.pauseTimer}>Pause Timer</button>
-        <button onClick={this.stopTimer}>Stop Timer</button>
+        <Flex align='center' justify='space-between' wrap style={{width: '200px'}}>
+          {/* <Button onClick={this.startTimer} className='test'>Start Timer</Button> */}
+          <FontAwesome
+            className='fa-play' name='play' size='2x' style={{backgroundColor: 'white', color: '#006494'}}
+            onClick={this.startTimer}
+          />
+          <FontAwesome
+            className='fa-pause' name='pause' size='2x' style={{backgroundColor: 'white', color: '#006494'}}
+            onClick={this.pauseTimer}
+          />
+          <FontAwesome
+            className='fa-stop' name='stop' size='2x' style={{backgroundColor: 'white', color: '#006494'}}
+            onClick={this.stopTimer}
+          />
+        </Flex>
+        {/* <Flex>
+          {this.props.allTasks.map(task =>
+            <p key={task.id}>{task.title}</p>)}
+        </Flex> */}
       </div>
     </div>
   }

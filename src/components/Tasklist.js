@@ -20,9 +20,12 @@ class Tasklist extends Component {
   }
 
   componentDidMount () {
-    window.fetch(`https://sleepy-mountain-24094.herokuapp.com/tasks?user_id=${this.props.userId}`, {
+    window.fetch(`https://sleepy-mountain-24094.herokuapp.com/tasks`, {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
+      }
     })
     .then(res => res.json())
     .then(data => this.setState({
@@ -35,7 +38,8 @@ class Tasklist extends Component {
     window.fetch(`https://sleepy-mountain-24094.herokuapp.com/tasks/${id}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
       }
     })
     let copyOfTaskList = this.state.tasks.slice()
@@ -88,7 +92,7 @@ class Tasklist extends Component {
 
     item = tasks.map((task, i) => {
       return <Panel
-        theme='secondary'
+        theme='primary'
         key={i}
         >
         <PanelHeader>
@@ -105,15 +109,15 @@ class Tasklist extends Component {
               >
               <ButtonCircle
                 style={{marginRight: '3px'}}
-                color='secondary'
-                backgroundColor='black'
+                color='white'
+                backgroundColor='#006494'
                 onClick={() => this.editTask(task)}
                 >
                 <Icon name='compose' />
               </ButtonCircle>
               <ButtonCircle
-                color='secondary'
-                backgroundColor='black'
+                color='white'
+                backgroundColor='#006494'
                 onClick={() => this.deleteTask(task.id)}
                 >
                 <Icon name='trash' />
@@ -132,12 +136,12 @@ class Tasklist extends Component {
         flex
         align='center'
         justify='space-between'
-        style={{width: '250px'}}
+        style={{width: '300px'}}
         col={10}
         >
-        <h1> TASKS </h1>
+        <h1 style={{fontFamily: 'Raleway'}}> TASKS </h1>
         <FontAwesome
-          className='fa-plus-circle' name='plus-circle' size='2x' style={{backgroundColor: 'white', color: 'black'}}
+          className='fa-plus-circle' name='plus-circle' size='2x' style={{backgroundColor: 'white', color: '#006494'}}
           onClick={() => this.addTask()}
         />
       </Box>

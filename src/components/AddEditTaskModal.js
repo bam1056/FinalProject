@@ -60,14 +60,16 @@ class AddEditTaskModal extends Component {
 
   addTask = () => {
     const { title, description, estimated_duration } = this.state
-    console.log('ADD TASK', title, description, this.props.userId, estimated_duration)
+    console.log('ADD TASK', title, description, estimated_duration)
     window.fetch(' https://sleepy-mountain-24094.herokuapp.com/tasks', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
+      },
       body: JSON.stringify({
         title: title,
         description: description,
-        user_id: this.props.userId,
         estimated_duration: estimated_duration
       })
     })
@@ -80,7 +82,10 @@ class AddEditTaskModal extends Component {
     console.log('EDIT TASK', title, description, user_id, estimated_duration)
     window.fetch(`https://sleepy-mountain-24094.herokuapp.com/tasks/${this.props.task.id}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
+      },
       body: JSON.stringify({
         title: title,
         description: description,
@@ -94,6 +99,14 @@ class AddEditTaskModal extends Component {
 
   render () {
     let modal
+    const selectOptions = [
+      {children: '15m', value: 15},
+      {children: '30m', value: 30},
+      {children: '45m', value: 45},
+      {children: '1h', value: 60},
+      {children: '1h 30m', value: 90},
+      {children: '2h', value: 120}
+    ]
     switch (this.props.mode) {
       case 'add': modal = (
         <div className='task-modal add'>
@@ -129,7 +142,7 @@ class AddEditTaskModal extends Component {
                 label='Estimated Time for Task'
                 message='Estimated Time for Task'
                 name='duration'
-                options={[{children: '15m', value: 15}, {children: '30m', value: 30}, {children: '45m', value: 45}, {children: '1h', value: 60}, {children: '1h 30m', value: 90}, {children: '2h', value: 120}]}
+                options={selectOptions}
                 rounded
               />
               <Button onClick={this.handleClick}>

@@ -33,7 +33,8 @@ class Header extends Component {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      height: '7vh'
+      height: '75px',
+      marginTop: '10px'
     }
     return <div className='head1'>
       <Base
