@@ -20,7 +20,7 @@ class BootAbout extends Component {
         <p>{person.quote}</p>
       </div>
     })
-    return <div className='boot' style={{overflowY: 'scroll', height: '80vh', padding: '10px'}}>
+    return <div className='boot' style={{overflowY: 'scroll', height: '70vh', padding: '10px'}}>
       <div className='container'>
         <div className='row'>
           <div className='col-lg-12'>

@@ -39,16 +39,6 @@ class Home extends Component {
     head.style.display = 'block'
   }
 
-  // toggleOverlay = (modal, bool) => {
-  //   switch (modal) {
-  //     case 'in': this.setState({signIn: false})
-  //       break
-  //     case 'up': this.setState({signUp: false})
-  //       break
-  //     default: console.error('Error In Modal Tasks')
-  //   }
-  // }
-
   handleAuthorization = () => {
     window.location.assign('https://sleepy-mountain-24094.herokuapp.com/oauth2authorize')
   }

@@ -100,11 +100,17 @@ class AddEditTaskModal extends Component {
   render () {
     let modal
     const selectOptions = [
+      {children: '5m', value: 5},
+      {children: '10m', value: 10},
       {children: '15m', value: 15},
+      {children: '20m', value: 20},
+      {children: '25', value: 25},
       {children: '30m', value: 30},
       {children: '45m', value: 45},
       {children: '1h', value: 60},
+      {children: '1h15m', value: 75},
       {children: '1h 30m', value: 90},
+      {children: '1h 45m', value: 105},
       {children: '2h', value: 120}
     ]
     switch (this.props.mode) {
@@ -189,7 +195,7 @@ class AddEditTaskModal extends Component {
                 label='Estimated Time for Task'
                 message='Estimated Time for Task'
                 name='duration'
-                options={[{children: '15m', value: 15}, {children: '30m', value: 30}, {children: '45m', value: 45}, {children: '1h', value: 60}, {children: '1h 30m', value: 90}, {children: '2h', value: 120}]}
+                options={selectOptions}
                 rounded
               />
               <Button onClick={this.handleClick}>

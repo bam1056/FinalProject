@@ -54,12 +54,9 @@ class App extends Component {
         >
         <Breadcrumbs
           links={[
-            {children: 'About Us', href: '/about'}, {children: 'Contact Us', href: '/contact'}, {children: 'FAQs', href: '#!'}]}
+            {children: 'About Us', href: '/about'}, {children: 'Contact Us', href: '/contact'}, {children: 'FAQs', href: '/faqs'}]}
         />
         <Text>&copy;Copyright Kebert/Macy Inc.</Text>
-        {/* <Text>
-          Transport graphic by <a href="http://www.flaticon.com/authors/freepik">Freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
-        </Text> */}
       </Footer>
     </div>
   }

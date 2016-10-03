@@ -36,11 +36,17 @@ class CurrentTask extends Component {
     this.interval = setInterval(() => { this.getTimeRemaining(endtime) }, 1000)
   }
 
-  pauseTimer = (e) => {
-    e.persist()
-    let time = Date.parse(new Date())
-    this.setState({paused: true, clockTime: time})
-  }
+  // pauseTimer = (e) => {
+  //   e.persist()
+  //   if (!this.state.paused) {
+  //     let time = Date.parse(new Date())
+  //     this.setState({paused: true, clockTime: time})
+  //     clearInterval(this.interval)
+  //   } else {
+  //     this.interval = setInterval(() => { this.getTimeRemaining(this.state.clockTime) }, 1000)
+  //     this.setState({paused: false})
+  //   }
+  // }
 
   stopTimer = (e) => {
     e.persist()

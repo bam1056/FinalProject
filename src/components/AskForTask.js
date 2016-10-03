@@ -8,7 +8,8 @@ class AskForTask extends Component {
   constructor () {
     super()
     this.state = {
-      duration: 0
+      duration: 0,
+      error: false
     }
   }
   static propTypes = {
@@ -31,13 +32,16 @@ class AskForTask extends Component {
     .then(data => {
       this.props.getAssignedTask(data)
       console.log('these are tasks', data)
-      if (data.length === 0) this.toggleErrorModal(true)
-      else browserHistory.push('/currentTask')
+      if (data.length === 0) {
+        console.log('No Tasks')
+        this.toggleErrorModal(true)
+      } else browserHistory.push('/currentTask')
     })
   }
 
   toggleErrorModal = (bool) => {
-    this.setState({ error: bool })
+    console.log('Fired error')
+    this.setState({ error: bool }, () => {console.log(this.state.error)})
   }
 
   render () {
@@ -74,12 +78,17 @@ class AskForTask extends Component {
     }
 
     const selectOptions = [
+      {children: '5m', value: 5},
+      {children: '10m', value: 10},
       {children: '15m', value: 15},
+      {children: '20m', value: 20},
+      {children: '25', value: 25},
       {children: '30m', value: 30},
       {children: '45m', value: 45},
       {children: '1h', value: 60},
-      {children: '1h10m', value: 70},
+      {children: '1h15m', value: 75},
       {children: '1h 30m', value: 90},
+      {children: '1h 45m', value: 105},
       {children: '2h', value: 120}
     ]
 
