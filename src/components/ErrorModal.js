@@ -45,7 +45,7 @@ class ErrorModal extends Component {
             onClick={() => browserHistory.push('/todolist')}
             style={{width: '45%', margin: '3px 5px'}}
             >
-            Go To TODO list
+            Go To TODOs
           </Button>
           <Button
             onClick={() => this.props.toggleErrorModal(false)}

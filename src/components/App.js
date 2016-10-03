@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Header from './Header'
-import { Footer, Breadcrumbs, Text } from 'rebass'
+import NoTaskModal from './NoTaskModal'
+import { Footer } from 'rebass'
+import { browserHistory } from 'react-router'
+import FontAwesome from 'react-fontawesome'
+import { Flex } from 'reflexbox'
 
 class App extends Component {
   constructor () {
@@ -30,6 +34,10 @@ class App extends Component {
     }, () => console.log('getAssignedTask() in app', taskList))
   }
 
+  toggleNoTasksModal = (bool) => {
+    this.setState({taskModal: bool})
+  }
+
   render () {
     const style = {
       backgroundColor: '#006494',
@@ -52,14 +60,37 @@ class App extends Component {
       <Footer
         style={style}
         >
-        <Breadcrumbs
-          links={[
-            {children: 'About Us', href: '/about'}, {children: 'Contact Us', href: '/contact'}, {children: 'FAQs', href: '/faqs'}]}
-        />
-        <Text>&copy;Copyright Kebert/Macy Inc.</Text>
+        <Flex
+          align='center'
+          justify='space-between'
+          wrap
+          col={10}
+          >
+          <FontAwesome
+            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px'}} className='list'
+            name='list'
+            onClick={() => browserHistory.push('/todolist')}
+            >ToDoList
+          </FontAwesome>
+          <FontAwesome
+            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px'}} className='train2' name='train'
+            onClick={() => browserHistory.push('/get-task')}
+            >GetTask
+          </FontAwesome>
+          <FontAwesome
+            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px'}} className='clockFoot' name='clock-o'
+            onClick={() => {
+              if (this.state.currentTask === undefined) {
+                this.toggleNoTasksModal(true)
+                return 0
+              } else browserHistory.push('/currentTask')
+            }}
+            >MyTask
+          </FontAwesome>
+        </Flex>
       </Footer>
+      <NoTaskModal open={this.state.taskModal} toggle={this.toggleNoTasksModal} />
     </div>
   }
 }
-
 export default App

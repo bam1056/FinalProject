@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Flex } from 'reflexbox'
+import { browserHistory } from 'react-router'
+import CongratsModal from './CongratsModal'
 import FontAwesome from 'react-fontawesome'
 
 class CurrentTask extends Component {
@@ -7,12 +9,15 @@ class CurrentTask extends Component {
     super(props)
     this.state = {
       remainingSeconds: props.currentTask.estimated_duration * 60,
-      timer: 'play'
+      timer: 'play',
+      currentTask: {},
+      congrats: false
     }
   }
   static propTypes = {
     currentTask: React.PropTypes.object,
-    allTasks: React.PropTypes.array
+    allTasks: React.PropTypes.array,
+    getAssignedTask: React.PropTypes.func
   }
 
   startTimer = (e) => {
@@ -31,9 +36,7 @@ class CurrentTask extends Component {
   }
 
   stopTimer = (e) => {
-    this.setState({remainingSeconds: this.props.currentTask.estimated_duration * 60})
-    e.persist()
-    e.target.parentElement.childNodes[0].disabled = false
+    this.setState({remainingSeconds: this.props.currentTask.estimated_duration * 60, timer: 'play'})
     clearInterval(this.interval)
   }
 
@@ -59,6 +62,32 @@ class CurrentTask extends Component {
 
   restoreColor = (e) => {
     e.target.style.color = '#006494'
+  }
+
+  completeTask = (e) => {
+    window.fetch(`https://sleepy-mountain-24094.herokuapp.com/tasks/${this.props.currentTask.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
+      }
+    })
+    if (this.props.allTasks.length > 1) {
+      this.stopTimer(e)
+      this.toggleCongrats(true)
+      setTimeout(() => {
+        this.toggleCongrats(false)
+      }, 5000)
+      let newTasks = this.props.allTasks.slice(1)
+      this.props.getAssignedTask(newTasks)
+    } else {
+      this.props.getAssignedTask([])
+      browserHistory.push('/get-task')
+    }
+  }
+
+  toggleCongrats = (bool) => {
+    this.setState({congrats: bool})
   }
 
   render () {
@@ -89,7 +118,8 @@ class CurrentTask extends Component {
     const clockStyle = {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      flexDirection: 'column'
     }
 
     const outBoxStyle = {
@@ -112,8 +142,13 @@ class CurrentTask extends Component {
       justifyContent: 'center'
     }
 
-    return <div className='task'>
-      <div className='task-heading' style={{textAlign: 'center'}}>
+    return <div
+      style={{marginTop: '100px'}}
+      className='task'
+      >
+      <div
+        className='task-heading' style={{textAlign: 'center'}}
+        >
         <h1 style={{'marginTop': '60px', fontFamily: 'Raleway'}}>
           {this.props.currentTask.title}
         </h1>
@@ -147,6 +182,12 @@ class CurrentTask extends Component {
           >
           {actionButton}
         </Flex>
+        <button onClick={this.completeTask}>
+          Complete
+        </button>
+        <CongratsModal
+          open={this.state.congrats}
+          toggle={this.toggleCongrats} />
       </div>
     </div>
   }

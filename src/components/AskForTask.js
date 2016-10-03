@@ -40,8 +40,7 @@ class AskForTask extends Component {
   }
 
   toggleErrorModal = (bool) => {
-    console.log('Fired error')
-    this.setState({ error: bool }, () => {console.log(this.state.error)})
+    this.setState({ error: bool })
   }
 
   render () {
