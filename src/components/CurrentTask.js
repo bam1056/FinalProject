@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'rebass'
 import { Flex } from 'reflexbox'
 import FontAwesome from 'react-fontawesome'
 
@@ -19,23 +18,28 @@ class CurrentTask extends Component {
     currentTask: React.PropTypes.object,
     allTasks: React.PropTypes.array
   }
-  componentDidMount () {
-    this.initializeTimer()
-  }
+  // componentDidMount () {
+  //   this.initializeTimer()
+  // }
+  //
+  // initializeTimer = () => {
+  //   let endtime = Date.parse(new Date()) + this.props.currentTask.estimated_duration * 60000
+  //   this.getTimeRemaining(endtime)
+  //   this.interval = setInterval(() => { this.getTimeRemaining(endtime) }, 1000)
+  // }
 
-  initializeTimer = () => {
-    let endtime = Date.parse(new Date()) + this.props.currentTask.estimated_duration * 60000
-    this.getTimeRemaining(endtime)
-    this.interval = setInterval(() => { this.getTimeRemaining(endtime) }, 1000)
-    this.setState({ clockTime: endtime })
-  }
-
-  startTimer = (e) => {
+  startTimer = (e, time) => {
+    if (e.target.disabled) return 0
     e.target.disabled = true
     let endtime = Date.parse(new Date()) + this.props.currentTask.estimated_duration * 60000
     this.getTimeRemaining(endtime)
     this.interval = setInterval(() => { this.getTimeRemaining(endtime) }, 1000)
-    this.setState({ clockTime: endtime })
+  }
+
+  pauseTimer = (e) => {
+    e.persist()
+    let time = Date.parse(new Date())
+    this.setState({paused: true, clockTime: time})
   }
 
   stopTimer = (e) => {
@@ -66,9 +70,35 @@ class CurrentTask extends Component {
     })
   }
 
+  changeColor = (e) => {
+    e.target.style.color = '#61CEED'
+  }
+
+  restoreColor = (e) => {
+    e.target.style.color = '#006494'
+  }
+
   render () {
     const { hours, minutes, seconds } = this.state
     const clockStyle = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+    const outBoxStyle = {
+      backgroundColor: '#61CEED',
+      height: '75px',
+      width: '50px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+    const inBoxStyle = {
+      backgroundColor: '#006494',
+      color: '#61CEED',
+      height: '65px',
+      width: '85%',
+      fontSize: '2em',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -80,27 +110,57 @@ class CurrentTask extends Component {
         </h1>
       </div>
       <h3 style={{textAlign: 'center', fontFamily: 'Roboto'}}>{this.props.currentTask.description}</h3>
-      <div style={{textAlign: 'center'}}>{hours}:{minutes}:{seconds}</div>
+      <div style={{textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '25px auto'}}>
+        <Flex align='center' justify='center' col={4}>
+          <div style={outBoxStyle}>
+            <div style={inBoxStyle}>
+              {hours}
+            </div>
+          </div>:
+          <div style={outBoxStyle}>
+            <div style={inBoxStyle}>
+              {minutes}
+            </div>
+          </div>:
+          <div style={outBoxStyle}>
+            <div style={inBoxStyle}>
+              {seconds}
+            </div>
+          </div>
+        </Flex>
+      </div>
       <div className='clock' style={clockStyle}>
-        <Flex align='center' justify='space-between' wrap style={{width: '200px'}}>
-          {/* <Button onClick={this.startTimer} className='test'>Start Timer</Button> */}
+        <Flex
+          align='center'
+          justify='space-between'
+          wrap
+          style={{width: '200px', border: '2px solid #006494', padding: '15px'}}
+          >
           <FontAwesome
             className='fa-play' name='play' size='2x' style={{backgroundColor: 'white', color: '#006494'}}
             onClick={this.startTimer}
-          />
+            onMouseOver={this.changeColor}
+            onMouseLeave={this.restoreColor}
+            />
           <FontAwesome
-            className='fa-pause' name='pause' size='2x' style={{backgroundColor: 'white', color: '#006494'}}
+            className='fa-pause'
+            name='pause'
+            size='2x'
+            style={{backgroundColor: 'white', color: '#006494'}}
             onClick={this.pauseTimer}
-          />
+            onMouseOver={this.changeColor}
+            onMouseLeave={this.restoreColor}
+            />
           <FontAwesome
-            className='fa-stop' name='stop' size='2x' style={{backgroundColor: 'white', color: '#006494'}}
+            className='fa-stop'
+            name='stop'
+            size='2x'
+            style={{backgroundColor: 'white', color: '#006494'}}
             onClick={this.stopTimer}
-          />
+            onMouseOver={this.changeColor}
+            onMouseLeave={this.restoreColor}
+            />
         </Flex>
-        {/* <Flex>
-          {this.props.allTasks.map(task =>
-            <p key={task.id}>{task.title}</p>)}
-        </Flex> */}
       </div>
     </div>
   }

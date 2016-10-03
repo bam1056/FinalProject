@@ -95,7 +95,9 @@ class Tasklist extends Component {
         theme='primary'
         key={i}
         >
-        <PanelHeader>
+        <PanelHeader
+          style={{backgroundColor: '#006494'}}
+          >
           <Flex
             align='center'
             justify='space-between'

@@ -6,9 +6,16 @@ class BootAbout extends Component {
   render () {
     const teamCards = staff.staff.map((person, i) => {
       return <div key={i} className='col-lg-4 col-sm-6 text-center'>
-        <Avatar circle size={150} src={person.photoUrl} />
-        <h3>{person.name}<Space x={2} />
-          <small>{person.title}</small>
+        <Avatar
+          circle
+          size={150}
+          src={person.photoUrl}
+          />
+        <h3>{person.name}
+          <Space x={2} />
+          <small>
+            {person.title}
+          </small>
         </h3>
         <p>{person.quote}</p>
       </div>
