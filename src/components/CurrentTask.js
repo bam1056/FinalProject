@@ -6,7 +6,8 @@ class CurrentTask extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      remainingSeconds: props.currentTask.estimated_duration * 60
+      remainingSeconds: props.currentTask.estimated_duration * 60,
+      timer: 'play'
     }
   }
   static propTypes = {
@@ -15,8 +16,7 @@ class CurrentTask extends Component {
   }
 
   startTimer = (e) => {
-    if (e.target.disabled) return 0
-    e.target.disabled = true
+    this.setState({timer: 'pause'})
     this.interval = setInterval(() => {
       const newRemainingSeconds = this.state.remainingSeconds - 1
       this.setState({remainingSeconds: newRemainingSeconds}, () => {
@@ -26,8 +26,8 @@ class CurrentTask extends Component {
   }
 
   pauseTimer = (e) => {
+    this.setState({timer: 'play'})
     clearInterval(this.interval)
-    e.target.parentElement.childNodes[0].disabled = false
   }
 
   stopTimer = (e) => {
@@ -62,11 +62,36 @@ class CurrentTask extends Component {
   }
 
   render () {
+    let actionButton
+    switch (this.state.timer) {
+      case 'play': actionButton =
+        <FontAwesome
+          className='fa-play'
+          name='play'
+          size='2x' style={{backgroundColor: 'white', color: '#006494', marginLeft: '5px'}}
+          onClick={this.startTimer}
+          onMouseOver={this.changeColor}
+          onMouseLeave={this.restoreColor}
+          />
+        break
+      case 'pause' : actionButton = <FontAwesome
+        className='fa-pause'
+        name='pause'
+        size='2x'
+        style={{backgroundColor: 'white', color: '#006494'}}
+        onClick={this.pauseTimer}
+        onMouseOver={this.changeColor}
+        onMouseLeave={this.restoreColor}
+        />
+        break
+    }
+
     const clockStyle = {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
     }
+
     const outBoxStyle = {
       backgroundColor: '#61CEED',
       height: '75px',
@@ -75,6 +100,7 @@ class CurrentTask extends Component {
       alignItems: 'center',
       justifyContent: 'center'
     }
+
     const inBoxStyle = {
       backgroundColor: '#006494',
       color: '#61CEED',
@@ -85,6 +111,7 @@ class CurrentTask extends Component {
       alignItems: 'center',
       justifyContent: 'center'
     }
+
     return <div className='task'>
       <div className='task-heading' style={{textAlign: 'center'}}>
         <h1 style={{'marginTop': '60px', fontFamily: 'Raleway'}}>
@@ -114,34 +141,11 @@ class CurrentTask extends Component {
       <div className='clock' style={clockStyle}>
         <Flex
           align='center'
-          justify='space-between'
+          justify='center'
           wrap
-          style={{width: '200px', border: '2px solid #006494', padding: '15px'}}
+          style={{width: '60px', height: '60px', border: '2px solid #006494', borderRadius: '50%'}}
           >
-          <FontAwesome
-            className='fa-play' name='play' size='2x' style={{backgroundColor: 'white', color: '#006494'}}
-            onClick={this.startTimer}
-            onMouseOver={this.changeColor}
-            onMouseLeave={this.restoreColor}
-            />
-          <FontAwesome
-            className='fa-pause'
-            name='pause'
-            size='2x'
-            style={{backgroundColor: 'white', color: '#006494'}}
-            onClick={this.pauseTimer}
-            onMouseOver={this.changeColor}
-            onMouseLeave={this.restoreColor}
-            />
-          <FontAwesome
-            className='fa-stop'
-            name='stop'
-            size='2x'
-            style={{backgroundColor: 'white', color: '#006494'}}
-            onClick={this.stopTimer}
-            onMouseOver={this.changeColor}
-            onMouseLeave={this.restoreColor}
-            />
+          {actionButton}
         </Flex>
       </div>
     </div>
