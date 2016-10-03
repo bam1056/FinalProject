@@ -3,52 +3,35 @@ import { Flex } from 'reflexbox'
 import FontAwesome from 'react-fontawesome'
 
 class CurrentTask extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
-      seconds: '00',
-      minutes: '00',
-      hours: '00',
-      days: 0,
-      total: 0,
-      clockTime: 0
+      remainingSeconds: props.currentTask.estimated_duration * 60
     }
   }
   static propTypes = {
     currentTask: React.PropTypes.object,
     allTasks: React.PropTypes.array
   }
-  // componentDidMount () {
-  //   this.initializeTimer()
-  // }
-  //
-  // initializeTimer = () => {
-  //   let endtime = Date.parse(new Date()) + this.props.currentTask.estimated_duration * 60000
-  //   this.getTimeRemaining(endtime)
-  //   this.interval = setInterval(() => { this.getTimeRemaining(endtime) }, 1000)
-  // }
 
-  startTimer = (e, time) => {
+  startTimer = (e) => {
     if (e.target.disabled) return 0
     e.target.disabled = true
-    let endtime = Date.parse(new Date()) + this.props.currentTask.estimated_duration * 60000
-    this.getTimeRemaining(endtime)
-    this.interval = setInterval(() => { this.getTimeRemaining(endtime) }, 1000)
+    this.interval = setInterval(() => {
+      const newRemainingSeconds = this.state.remainingSeconds - 1
+      this.setState({remainingSeconds: newRemainingSeconds}, () => {
+        if (this.state.remainingSeconds <= 0) this.pauseTimer()
+      })
+    }, 1000)
   }
 
-  // pauseTimer = (e) => {
-  //   e.persist()
-  //   if (!this.state.paused) {
-  //     let time = Date.parse(new Date())
-  //     this.setState({paused: true, clockTime: time})
-  //     clearInterval(this.interval)
-  //   } else {
-  //     this.interval = setInterval(() => { this.getTimeRemaining(this.state.clockTime) }, 1000)
-  //     this.setState({paused: false})
-  //   }
-  // }
+  pauseTimer = (e) => {
+    clearInterval(this.interval)
+    e.target.parentElement.childNodes[0].disabled = false
+  }
 
   stopTimer = (e) => {
+    this.setState({remainingSeconds: this.props.currentTask.estimated_duration * 60})
     e.persist()
     e.target.parentElement.childNodes[0].disabled = false
     clearInterval(this.interval)
@@ -58,22 +41,16 @@ class CurrentTask extends Component {
     clearInterval(this.interval)
   }
 
-  getTimeRemaining = (endtime) => {
-    let t = endtime - Date.parse(new Date())
-    let seconds = Math.floor((t / 1000) % 60).toString()
-    let minutes = Math.floor((t / 1000 / 60) % 60)
-    let hours = Math.floor((t / (1000 * 60 * 60)) % 24)
-    let days = Math.floor(t / (1000 * 60 * 60 * 24))
-    let newS = ('0' + seconds).slice(-2)
-    let newM = ('0' + minutes).slice(-2)
-    let newH = ('0' + hours).slice(-2)
-    this.setState({
-      total: t,
-      days: days,
-      hours: newH,
-      minutes: newM,
-      seconds: newS
-    })
+  get seconds () {
+    return ('0' + Math.floor(this.state.remainingSeconds % 60).toString()).slice(-2)
+  }
+
+  get minutes () {
+    return ('0' + Math.floor((this.state.remainingSeconds / 60) % 60).toString()).slice(-2)
+  }
+
+  get hours () {
+    return ('0' + Math.floor((this.state.remainingSeconds / (60 * 60)) % 24)).slice(-2)
   }
 
   changeColor = (e) => {
@@ -85,7 +62,6 @@ class CurrentTask extends Component {
   }
 
   render () {
-    const { hours, minutes, seconds } = this.state
     const clockStyle = {
       display: 'flex',
       alignItems: 'center',
@@ -120,17 +96,17 @@ class CurrentTask extends Component {
         <Flex align='center' justify='center' col={4}>
           <div style={outBoxStyle}>
             <div style={inBoxStyle}>
-              {hours}
+              {this.hours}
             </div>
           </div>:
           <div style={outBoxStyle}>
             <div style={inBoxStyle}>
-              {minutes}
+              {this.minutes}
             </div>
           </div>:
           <div style={outBoxStyle}>
             <div style={inBoxStyle}>
-              {seconds}
+              {this.seconds}
             </div>
           </div>
         </Flex>
