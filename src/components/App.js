@@ -31,7 +31,7 @@ class App extends Component {
     this.setState({
       currentTask: taskList[0],
       allTasks: taskList
-    }, () => console.log('getAssignedTask() in app', taskList))
+    }, () => { return this.state.currentTask })
   }
 
   toggleNoTasksModal = (bool) => {
@@ -67,18 +67,18 @@ class App extends Component {
           col={10}
           >
           <FontAwesome
-            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px'}} className='list'
+            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px', fontSize: '1.35em'}} className='list'
             name='list'
             onClick={() => browserHistory.push('/todolist')}
             >ToDoList
           </FontAwesome>
           <FontAwesome
-            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px'}} className='train2' name='train'
+            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px', fontSize: '1.35em'}} className='train2' name='train'
             onClick={() => browserHistory.push('/get-task')}
             >GetTask
           </FontAwesome>
           <FontAwesome
-            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px'}} className='clockFoot' name='clock-o'
+            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px', fontSize: '1.35em'}} className='clockFoot' name='clock-o'
             onClick={() => {
               if (this.state.currentTask === undefined) {
                 this.toggleNoTasksModal(true)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Flex } from 'reflexbox'
 import { Button, Heading, Text, Space } from 'rebass'
-// import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
 class Home extends Component {
@@ -31,7 +31,7 @@ class Home extends Component {
   componentDidMount () {
     const head = document.querySelector('.head1')
     head.style.display = 'none'
-    // if (window.sessionStorage.token) browserHistory.push('/get-task')
+    if (window.sessionStorage.token) browserHistory.push('/get-task')
   }
 
   componentWillUnmount () {
@@ -75,9 +75,19 @@ class Home extends Component {
         <Text style={{margin: '100px 10px 25px 10px', textAlign: 'center', fontFamily: 'Roboto', fontSize: '1.25em'}}>
           At StreamLine, we know your time is valuable. Let us help you manage it.
         </Text>
-        <Flex justify='center' align='center'>
-          <Button className='auth-button' style={{marginTop: '25px', boxShadow: '2px 2px 2px #006498', backgroundColor: '#006494'}} onClick={this.handleAuthorization}>
-            <Flex align='center' justify='center'>
+        <Flex
+          justify='center'
+          align='center'
+          >
+          <Button
+            className='auth-button'
+            style={{marginTop: '25px', boxShadow: '2px 2px 2px #006498', backgroundColor: '#006494'}}
+            onClick={this.handleAuthorization}
+            >
+            <Flex
+              align='center'
+              justify='center'
+              >
               <FontAwesome
                 className='fa-google'
                 name='fa-google'

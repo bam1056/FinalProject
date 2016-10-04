@@ -8,9 +8,9 @@ class CurrentTask extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      remainingSeconds: props.currentTask.estimated_duration * 60,
+      remainingSeconds: this.props.currentTask.estimated_duration * 60,
       timer: 'play',
-      currentTask: {},
+      currentTask: this.props.currentTask,
       congrats: false
     }
   }
@@ -73,13 +73,15 @@ class CurrentTask extends Component {
       }
     })
     if (this.props.allTasks.length > 1) {
-      this.stopTimer(e)
       this.toggleCongrats(true)
       setTimeout(() => {
         this.toggleCongrats(false)
       }, 5000)
       let newTasks = this.props.allTasks.slice(1)
-      this.props.getAssignedTask(newTasks)
+      let task = this.props.getAssignedTask(newTasks)
+      this.setState({currentTask: task}, () => {
+        this.stopTimer()
+      })
     } else {
       this.props.getAssignedTask([])
       browserHistory.push('/get-task')
