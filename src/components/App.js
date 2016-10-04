@@ -47,16 +47,20 @@ class App extends Component {
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      position: 'absolute',
+      position: 'fixed',
       bottom: '0',
       right: '0',
       left: '0',
       minWidth: '100%',
-      margin: 0
+      margin: 0,
+      height: '80px',
+      paddingBottom: '16px'
     }
     return <div>
       <Header />
-      {this.props.children && React.cloneElement(this.props.children, {setUser: this.setUser, userName: this.state.userName, userId: this.state.userId, getAssignedTask: this.getAssignedTask, currentTask: this.state.currentTask, allTasks: this.state.allTasks})}
+      <main style={{paddingBottom: '120px'}}>
+        {this.props.children && React.cloneElement(this.props.children, {setUser: this.setUser, userName: this.state.userName, userId: this.state.userId, getAssignedTask: this.getAssignedTask, currentTask: this.state.currentTask, allTasks: this.state.allTasks})}
+      </main>
       <Footer
         style={style}
         >

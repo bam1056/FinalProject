@@ -154,7 +154,8 @@ class Tasklist extends Component {
         userName={this.props.userName}
         userId={this.props.userId}
         task={this.state.currentlyEditedTask}
-        overlay={this.state.overlay} toggleOverlay={this.toggleOverlay}
+        overlay={this.state.overlay}
+        toggleOverlay={this.toggleOverlay}
         mode={this.state.mode}
         sendTask={this.receiveTask}
         key={currentlyEditedTask ? currentlyEditedTask.id : null}

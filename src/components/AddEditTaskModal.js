@@ -12,14 +12,13 @@ import {
 } from 'rebass'
 
 class AddEditTaskModal extends Component {
-  constructor () {
-    super()
-    console.log('buildingModal')
+  constructor (props) {
+    super(props)
     this.state = {
-      title: '',
-      description: '',
-      estimated_duration: 0,
-      deadline: ''
+      title: props.task ? props.task.title : '',
+      description: props.task ? props.task.description : '',
+      estimated_duration: props.task ? props.task.estimated_duration : 0,
+      deadline: props.task ? props.task.deadline : ''
     }
   }
 
@@ -74,7 +73,14 @@ class AddEditTaskModal extends Component {
       })
     })
     .then(res => res.json())
-    .then(data => this.props.sendTask(data))
+    .then(data => {
+      this.setState({
+        title: '',
+        description: '',
+        estimated_duration: 0,
+        deadline: ''
+      }, () => this.props.sendTask(data))
+    })
   }
 
   editTask = () => {
@@ -94,17 +100,26 @@ class AddEditTaskModal extends Component {
       })
     })
     .then(res => res.json())
-    .then(data => this.props.sendTask(data))
+    .then(data => {
+      this.props.sendTask(data)
+      this.setState({
+        title: '',
+        description: '',
+        estimated_duration: 0,
+        deadline: ''
+      })
+    })
   }
 
   render () {
     let modal
+    console.log('NEW TEST', this.props, this.state)
     const selectOptions = [
       {children: '5m', value: 5},
       {children: '10m', value: 10},
       {children: '15m', value: 15},
       {children: '20m', value: 20},
-      {children: '25', value: 25},
+      {children: '25m', value: 25},
       {children: '30m', value: 30},
       {children: '45m', value: 45},
       {children: '1h', value: 60},
@@ -127,7 +142,7 @@ class AddEditTaskModal extends Component {
                   justify='space-between'
                   col={12}
                   >
-                  TASK
+                  ADD TASK
                   <Close onClick={this.closeTaskModal} />
                 </Flex>
               </PanelHeader>
@@ -136,18 +151,21 @@ class AddEditTaskModal extends Component {
                 placeholder='Title'
                 label='Title'
                 name='Title'
+                value={this.state.title}
                 onChange={this.getTitle}
                 />
               <Textarea
                 placeholder='Description'
                 label='Description'
                 name='Description'
+                value={this.state.description}
                 onChange={this.getDescription}
                 />
               <Select
                 label='Estimated Time for Task'
                 message='Estimated Time for Task'
                 name='duration'
+                defaultValue='5'
                 options={selectOptions}
                 rounded
               />
@@ -172,7 +190,7 @@ class AddEditTaskModal extends Component {
                   justify='space-between'
                   col={12}
                   >
-                  TASK
+                  EDIT TASK
                   <Close onClick={this.closeTaskModal} />
                 </Flex>
               </PanelHeader>
@@ -192,9 +210,10 @@ class AddEditTaskModal extends Component {
                 onChange={this.getDescription}
                 />
               <Select
-                label='Estimated Time for Task'
+                label='Estimated Time for Task2'
                 message='Estimated Time for Task'
                 name='duration'
+                defaultValue={this.props.task.estimated_duration}
                 options={selectOptions}
                 rounded
               />

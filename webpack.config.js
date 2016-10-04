@@ -11,6 +11,7 @@ const BUILD_PATH = path.resolve(ROOT_PATH, 'build')
 
 module.exports = {
   entry: [
+    'whatwg-fetch',
     SOURCE_PATH
   ],
   output: {
@@ -35,11 +36,17 @@ module.exports = {
       test: /\.(sass|scss)$/,
       loaders: ['style', 'css', 'sass']
     }, {
-      test: /\.(png|jpe?g|gif|svg|ttf|eot|otf|woff|woff2)$/,
+      test: /\.(png|jpe?g|gif)$/,
       loader: 'file'
     }, {
       test: /\.json$/,
       loader: 'json'
+    }, {
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'url?limit=10000&mimetype=application/font-woff'
+    }, {
+      test: /\.(otf|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'file'
     }]
   }
 }

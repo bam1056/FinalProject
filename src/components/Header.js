@@ -57,13 +57,24 @@ class Header extends Component {
             open={this.state.open}
             onMouseLeave={this.dismissDropDown}
             >
-            <NavItem to='/' is={Link} children='Home' />
-            <NavItem to='/contact' is={Link} children='Contact Us' />
-            <NavItem to='/about' is={Link} children='About Us' />
-            <NavItem to='/faqs' is={Link} children='FAQs' />
-            <NavItem to='/profile' is={Link} children='Profile' />
+            <NavItem
+              to='/'
+              is={Link}
+              children='Home'
+              />
+            <NavItem
+              to='/contact'
+              is={Link}
+              children='Contact Us'
+              />
+            <NavItem
+              to='/about'
+              is={Link}
+              children='About Us'
+              />
           </DropdownMenu>
         </Dropdown>
+        <div className='headlogo' />
         <FontAwesome
           className='fa fa-cog' name='cog' style={{backgroundColor: '#006494', color: 'white', marginRight: '15px'}} onClick={() =>
           browserHistory.push('/settings')}

@@ -39,19 +39,10 @@ class CongratsModal extends Component {
         >
         <Panel theme='primary'>
           <PanelHeader>
-            <Flex
-              align='center'
-              justify='space-between'
-              col={12}
-              >
-              Congratulations!
-              <Close onClick={() => this.props.toggle(false)} />
-            </Flex>
+              Congrats! You Finished a Task
           </PanelHeader>
           <div style={modalStyle} className='trBG'>
-            Well Done<br /> You finished a task <br />
-            <br />
-            Let's keep the StreamLine rolling!
+              Now we're picking up steam!
           </div>
         </Panel>
       </Overlay>

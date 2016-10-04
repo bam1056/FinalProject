@@ -59,7 +59,8 @@ class AskForTask extends Component {
     }
 
     const questionStyle = {
-      textAlign: 'center'
+      textAlign: 'center',
+      marginTop: '-50px'
     }
 
     const hStyle = {
@@ -103,7 +104,7 @@ class AskForTask extends Component {
         <Select
           style={selectStyle}
           label=''
-          message=''
+          message='Free Time Available'
           name='duration'
           options={selectOptions}
           rounded

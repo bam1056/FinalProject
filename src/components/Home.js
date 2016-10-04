@@ -31,12 +31,18 @@ class Home extends Component {
   componentDidMount () {
     const head = document.querySelector('.head1')
     head.style.display = 'none'
+    const foot =
+    document.querySelector('.Footer')
+    foot.style.display = 'none'
     if (window.sessionStorage.token) browserHistory.push('/get-task')
   }
 
   componentWillUnmount () {
     const head = document.querySelector('.head1')
     head.style.display = 'block'
+    const foot =
+    document.querySelector('.Footer')
+    foot.style.display = 'flex'
   }
 
   handleAuthorization = () => {
@@ -72,7 +78,7 @@ class Home extends Component {
         <Heading
           children='Welcome to StreamLine'
           style={headingStyle} />
-        <Text style={{margin: '100px 10px 25px 10px', textAlign: 'center', fontFamily: 'Roboto', fontSize: '1.25em'}}>
+        <Text style={{margin: '75px 10px 25px 10px', textAlign: 'center', fontFamily: 'Roboto', fontSize: '1.25em'}}>
           At StreamLine, we know your time is valuable. Let us help you manage it.
         </Text>
         <Flex
@@ -81,7 +87,7 @@ class Home extends Component {
           >
           <Button
             className='auth-button'
-            style={{marginTop: '25px', boxShadow: '2px 2px 2px #006498', backgroundColor: '#006494'}}
+            style={{marginTop: '15px', boxShadow: '2px 2px 2px #006498', backgroundColor: '#006494'}}
             onClick={this.handleAuthorization}
             >
             <Flex

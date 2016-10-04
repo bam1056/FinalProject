@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Flex } from 'reflexbox'
 import { browserHistory } from 'react-router'
+import { Button } from 'rebass'
 import CongratsModal from './CongratsModal'
 import FontAwesome from 'react-fontawesome'
 
@@ -42,6 +43,7 @@ class CurrentTask extends Component {
 
   componentWillUnmount () {
     clearInterval(this.interval)
+    this.props.getAssignedTask([])
   }
 
   get seconds () {
@@ -83,8 +85,14 @@ class CurrentTask extends Component {
         this.stopTimer()
       })
     } else {
-      this.props.getAssignedTask([])
-      browserHistory.push('/get-task')
+      console.log('currentTask Else fired')
+      this.toggleCongrats(true)
+      setTimeout(() => {
+        console.log('TIMEOUT')
+        this.toggleCongrats(false)
+        // this.props.getAssignedTask([])
+        browserHistory.push('/todolist')
+      }, 5000)
     }
   }
 
@@ -151,7 +159,8 @@ class CurrentTask extends Component {
       <div
         className='task-heading' style={{textAlign: 'center'}}
         >
-        <h1 style={{'marginTop': '60px', fontFamily: 'Raleway'}}>
+        <h2 style={{marginTop: '-50px'}}>This is what you should be doing<br /> <span>RIGHT NOW</span></h2>
+        <h1 style={{'marginTop': '30px', fontFamily: 'Raleway'}}>
           {this.props.currentTask.title}
         </h1>
       </div>
@@ -184,9 +193,9 @@ class CurrentTask extends Component {
           >
           {actionButton}
         </Flex>
-        <button onClick={this.completeTask}>
+        <Button style={{marginTop: '20px'}} backgroundColor='#006494' onClick={this.completeTask}>
           Complete
-        </button>
+        </Button>
         <CongratsModal
           open={this.state.congrats}
           toggle={this.toggleCongrats} />
