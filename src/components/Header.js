@@ -72,11 +72,16 @@ class Header extends Component {
               is={Link}
               children='About Us'
               />
+            <NavItem
+              to='/profile'
+              is={Link}
+              children='Profile'
+              />
           </DropdownMenu>
         </Dropdown>
         <div className='headlogo' />
         <FontAwesome
-          className='fa fa-cog' name='cog' style={{backgroundColor: '#006494', color: 'white', marginRight: '15px'}} onClick={() =>
+          className='fa fa-cog' name='cog' style={{backgroundColor: '#006494', color: 'white', marginRight: '15px', fontSize: '1.35em'}} onClick={() =>
           browserHistory.push('/settings')}
           />
       </Base>

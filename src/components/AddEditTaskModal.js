@@ -135,7 +135,7 @@ class AddEditTaskModal extends Component {
             open={this.props.overlay}
             dark
             >
-            <Panel theme='secondary'>
+            <Panel theme='primary'>
               <PanelHeader>
                 <Flex
                   align='center'

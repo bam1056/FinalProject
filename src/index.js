@@ -8,6 +8,7 @@ import Tasklist from './components/Tasklist'
 import BootAbout from './components/BootAbout'
 import Settings from './components/Settings'
 import Contact from './components/ContactUs'
+import Profile from './components/Profile'
 import { Router, Route, browserHistory } from 'react-router'
 import './styles/screen.sass'
 import 'font-awesome/scss/font-awesome.scss'
@@ -22,6 +23,7 @@ const router = (
       <Route path='/about' component={BootAbout} />
       <Route path='/settings' component={Settings} />
       <Route path='/contact' component={Contact} />
+      <Route path='/profile' component={Profile} />
     </Route>
   </Router>
 )

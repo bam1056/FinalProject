@@ -15,8 +15,7 @@ class Profile extends Component {
   render () {
     return <div className='profile'>
       <Box
-        style={{}}
-        mt={4}
+        mt={2}
         flex
         flexColumn
         align='center'
@@ -27,27 +26,28 @@ class Profile extends Component {
           width={300}
           >
           <CardImage
-            src='https://upload.wikimedia.org/wikipedia/commons/0/07/Avatar_girl_face.png' style={{maxWidth: 150}}
+            src='http://media.gettyimages.com/photos/shouting-mixed-race-businessman-picture-id136801997' style={{maxWidth: 150}}
             />
           <Heading
             level={2}
             size={3}
+            style={{fontFamily: 'Raleway', fontSize: '2em'}}
             >
             {this.props.userName}
           </Heading>
-          <Panel>
+          <Panel style={{fontFamily: 'Roboto'}}>
             <Text>
-              <strong>Email:</strong>
+              <strong>Email:</strong> <small>example@email.com</small>
             </Text>
           </Panel>
           <Panel>
             <Text>
-              <strong>Company:</strong>
+              <strong>Company:</strong> <small>My Favorite Company, LLC</small>
             </Text>
           </Panel>
           <Panel>
             <Text>
-              <strong>Bio:</strong>
+              <strong>Bio:</strong> <small>A funloving person with a love for all things code related</small>
             </Text>
           </Panel>
         </Card>
