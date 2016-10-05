@@ -17,7 +17,6 @@ class Home extends Component {
       this.state.token = this.props.location.query.token
       window.sessionStorage.setItem('token', this.props.location.query.token)
       this.props.setUser(this.props.location.query.user_name)
-      console.log(this.state.token, this.props.userName)
     }
   }
 

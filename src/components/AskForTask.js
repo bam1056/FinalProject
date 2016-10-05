@@ -20,7 +20,7 @@ class AskForTask extends Component {
 
   getTask = () => {
     let duration = document.querySelector("select[name='duration']")
-    console.log('SELECT', duration.value)
+    // console.log('SELECT', duration.value)
     window.fetch(` https://sleepy-mountain-24094.herokuapp.com/tasks/scheduled?time_block=${duration.value}`, {
       method: 'GET',
       headers: {
@@ -31,9 +31,9 @@ class AskForTask extends Component {
     .then(res => res.json())
     .then(data => {
       this.props.getAssignedTask(data)
-      console.log('these are tasks', data)
+      // console.log('these are tasks', data)
       if (data.length === 0) {
-        console.log('No Tasks')
+        // console.log('No Tasks')
         this.toggleErrorModal(true)
       } else browserHistory.push('/currentTask')
     })

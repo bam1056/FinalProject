@@ -30,7 +30,7 @@ class Tasklist extends Component {
     .then(res => res.json())
     .then(data => this.setState({
       tasks: data
-    }, () => console.log('Tasks', this.state.tasks))
+    })
   )
   }
 
@@ -66,7 +66,7 @@ class Tasklist extends Component {
   }
 
   receiveTask = (task) => {
-    console.log('RECEIVING NEW TASK', task)
+    // console.log('RECEIVING NEW TASK', task)
     let copyOfTaskList = this.state.tasks.slice()
     copyOfTaskList.push(task)
     this.setState({ tasks: copyOfTaskList })

@@ -6,7 +6,12 @@ import { Avatar, Heading, Text } from 'rebass'
 class About extends Component {
   render () {
     const staffCards = staff.staff.map((staff, i) => {
-      return <Box flex flexColumn key={i} style={{width: '30%', margin: '5px 5px'}}>
+      return <Box
+        flex
+        flexColumn
+        key={i}
+        style={{width: '30%', margin: '5px 5px'}}
+        >
         <Box
           flexColumn
           flex

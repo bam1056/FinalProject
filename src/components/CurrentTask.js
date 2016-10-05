@@ -85,10 +85,10 @@ class CurrentTask extends Component {
         this.stopTimer()
       })
     } else {
-      console.log('currentTask Else fired')
+      // console.log('currentTask Else fired')
       this.toggleCongrats(true)
       setTimeout(() => {
-        console.log('TIMEOUT')
+        // console.log('TIMEOUT')
         this.toggleCongrats(false)
         // this.props.getAssignedTask([])
         browserHistory.push('/todolist')
@@ -152,16 +152,9 @@ class CurrentTask extends Component {
       justifyContent: 'center'
     }
 
-    const spanStyle = {
-      color: '#006494',
-      fontSize: '1.5em',
-      fontFamily: 'Raleway',
-      fontStyle: 'italic'
-    }
-
     const h2Style = {
       marginTop: '-75px',
-      fontFamily: 'Roboto',
+      fontFamily: 'Raleway',
       color: '#61CEED',
       textShadow: '2px 2px 2px #006494'
     }
@@ -174,7 +167,7 @@ class CurrentTask extends Component {
         className='task-heading'
         style={{textAlign: 'center'}}
         >
-        <h2 style={h2Style}>Do This Task<br /> <span style={spanStyle}>RIGHT NOW</span></h2>
+        <h2 style={h2Style}>Let's Do This</h2>
         <h1 style={{'marginTop': '30px', fontFamily: 'Raleway'}}>
           {this.props.currentTask.title}
         </h1>
@@ -208,7 +201,7 @@ class CurrentTask extends Component {
           >
           {actionButton}
         </Flex>
-        <Button style={{marginTop: '20px'}} backgroundColor='#006494' onClick={this.completeTask}>
+        <Button style={{marginTop: '20px', maxWidth: '200px'}} backgroundColor='#006494' onClick={this.completeTask}>
           Complete
         </Button>
         <CongratsModal

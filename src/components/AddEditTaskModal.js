@@ -50,7 +50,7 @@ class AddEditTaskModal extends Component {
 
   handleClick = () => {
     let duration = document.querySelector("select[name='duration']")
-    console.log('SELECT', duration.value)
+    // console.log('SELECT', duration.value)
     this.setState({
       estimated_duration: duration.value
     }, () => this.props.mode === 'add' ? this.addTask() : this.editTask())
@@ -59,7 +59,7 @@ class AddEditTaskModal extends Component {
 
   addTask = () => {
     const { title, description, estimated_duration } = this.state
-    console.log('ADD TASK', title, description, estimated_duration)
+    // console.log('ADD TASK', title, description, estimated_duration)
     window.fetch(' https://sleepy-mountain-24094.herokuapp.com/tasks', {
       method: 'POST',
       headers: {
@@ -84,8 +84,8 @@ class AddEditTaskModal extends Component {
   }
 
   editTask = () => {
-    const { title, description, user_id, estimated_duration } = this.state
-    console.log('EDIT TASK', title, description, user_id, estimated_duration)
+    const { title, description, estimated_duration } = this.state
+    // console.log('EDIT TASK', title, description, user_id, estimated_duration)
     window.fetch(`https://sleepy-mountain-24094.herokuapp.com/tasks/${this.props.task.id}`, {
       method: 'PUT',
       headers: {
@@ -113,7 +113,6 @@ class AddEditTaskModal extends Component {
 
   render () {
     let modal
-    console.log('NEW TEST', this.props, this.state)
     const selectOptions = [
       {children: '5m', value: 5},
       {children: '10m', value: 10},

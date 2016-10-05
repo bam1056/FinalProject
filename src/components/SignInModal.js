@@ -49,7 +49,7 @@ class SignInModal extends Component {
   }
 
   render () {
-    console.log(this.props.signIn)
+    // console.log(this.props.signIn)
     return <div className='signIn'>
       <Overlay
         open={this.props.signIn}
