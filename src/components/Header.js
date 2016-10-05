@@ -8,6 +8,7 @@ import {
   Base,
   Space
 } from 'rebass'
+import { Flex } from 'reflexbox'
 import { Link, browserHistory } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
@@ -40,7 +41,7 @@ class Header extends Component {
     const baseStyle = {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
       height: '75px',
       marginTop: '10px'
     }
@@ -62,51 +63,53 @@ class Header extends Component {
         color='white'
         style={baseStyle}
         >
-        <Dropdown>
-          <Button
-            backgroundColor='#006494'
-            color='white'
-            inverted
-            rounded
-            onMouseEnter={this.showDropDown}
-            style={{fontFamily: 'FontAwesome', fontWeight: 'light', fontSize: '1.4em'}}
-            >
-            Menu
-            <Arrow direction='down' />
-          </Button>
-          <DropdownMenu
-            open={this.state.open}
-            onMouseLeave={this.dismissDropDown}
-            >
-            <NavItem
-              to='/'
-              is={Link}
-              children='Home'
-              />
-            <NavItem
-              to='/contact'
-              is={Link}
-              children='Contact Us'
-              />
-            <NavItem
-              to='/about'
-              is={Link}
-              children='About Us'
-              />
-            <NavItem
-              to='/profile'
-              is={Link}
-              children='Profile'
-              />
-          </DropdownMenu>
-        </Dropdown>
-        <div className='headlogo' />
-        <FontAwesome
-          className='fa fa-cog'
-          name='cog'
-          style={settingStyle}
-          onClick={() => browserHistory.push('/settings')}
-          ><Space x={2} />Settings</FontAwesome>
+        <Flex col={10} justify='space-between' align='center'>
+          <Dropdown>
+            <Button
+              backgroundColor='#006494'
+              color='white'
+              inverted
+              rounded
+              onMouseEnter={this.showDropDown}
+              style={{fontFamily: 'FontAwesome', fontWeight: 'light', fontSize: '1.4em'}}
+              >
+              Menu
+              <Arrow direction='down' />
+            </Button>
+            <DropdownMenu
+              open={this.state.open}
+              onMouseLeave={this.dismissDropDown}
+              >
+              <NavItem
+                to='/'
+                is={Link}
+                children='Home'
+                />
+              <NavItem
+                to='/contact'
+                is={Link}
+                children='Contact Us'
+                />
+              <NavItem
+                to='/about'
+                is={Link}
+                children='About Us'
+                />
+              <NavItem
+                to='/profile'
+                is={Link}
+                children='Profile'
+                />
+            </DropdownMenu>
+          </Dropdown>
+          <div className='headlogo' />
+          <FontAwesome
+            className='fa fa-cog'
+            name='cog'
+            style={settingStyle}
+            onClick={() => browserHistory.push('/settings')}
+            ><Space x={2} />Settings</FontAwesome>
+        </Flex>
       </Base>
     </div>
   }
