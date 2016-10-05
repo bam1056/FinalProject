@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import NoTaskModal from './NoTaskModal'
-import { Footer } from 'rebass'
+import { Footer, Space } from 'rebass'
 import { browserHistory } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 import { Flex } from 'reflexbox'
@@ -62,11 +62,12 @@ class App extends Component {
       flexDirection: 'column',
       margin: '-15px 10px 0 10px',
       fontSize: '1.35em',
-      fontWeight: 'bold'
+      fontWeight: 'normal'
     }
 
     const spanStyle = {
-      fontFamily: 'Roboto'
+      fontFamily: 'Roboto',
+      marginTop: '7px'
     }
 
     return <div>

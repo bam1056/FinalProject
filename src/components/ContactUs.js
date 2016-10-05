@@ -20,10 +20,11 @@ class Contact extends Component {
         <Text style={{fontFamily: 'Roboto'}}>
           Thanks for your interest in StreamLine. You can reach our founders in the following ways:
         </Text>
-        <h3 style={{fontFamily: 'Raleway'}}>Brett Macy:</h3> brett.macy.codes@gmail.com <br />
+        <h3 style={{fontFamily: 'Raleway'}}>Brett Macy:</h3>
+        <a href='mailto:brett.macy.codes@gmail.com'>Email</a> <br />
         <a href='https://github.com/bam1056'>GitHub</a>
         <h3 style={{fontFamily: 'Raleway'}}>Alan Kebert:</h3>
-        alan.kebert@gmail.com <br />
+        <a href='mailto:adkebert@yahoo.com'>Email</a> <br />
         <a href='https://github.com/ADKebert'>GitHub</a>
       </Flex>
     </div>

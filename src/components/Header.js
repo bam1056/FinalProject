@@ -55,11 +55,12 @@ class Header extends Component {
       justifyContent: 'center',
       alignItems: 'center',
       marginLeft: '10px',
-      fontWeight: 'bold'
+      fontWeight: 'normal'
     }
 
     const spanStyle = {
-      fontFamily: 'Roboto'
+      fontFamily: 'Roboto',
+      fontWeight: 'light'
     }
 
     return <div className='head1'>
