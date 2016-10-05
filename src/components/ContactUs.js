@@ -12,7 +12,7 @@ class Contact extends Component {
       marginLeft: '25px',
       flexWrap: 'wrap'
     }
-    return <div style={mainStyle} className='contact'>
+    return <div style={mainStyle} className='contact container'>
       <Flex flexColumn col={12} wrap>
         <h1 style={{fontFamily: 'Raleway'}}
         >Contact Us<Space x={2} /><small>We appreciate your patronage</small><hr />

@@ -13,7 +13,7 @@ class Profile extends Component {
     userName: React.PropTypes.string
   }
   render () {
-    return <div className='profile'>
+    return <div className='profile container'>
       <Box
         mt={2}
         flex
@@ -23,10 +23,11 @@ class Profile extends Component {
         >
         <Card
           rounded
-          width={300}
+          style={{width: '85%'}}
           >
           <CardImage
-            src='http://media.gettyimages.com/photos/shouting-mixed-race-businessman-picture-id136801997' style={{maxWidth: 150}}
+            src='http://media.gettyimages.com/photos/shouting-mixed-race-businessman-picture-id136801997'
+            style={{maxWidth: 150}}
             />
           <Heading
             level={2}

@@ -19,7 +19,8 @@ class ErrorModal extends Component {
 
   render () {
     const overlayStyle = {
-      width: '75vw'
+      width: '75vw',
+      fontFamily: 'Roboto'
     }
     return <div className='errorModal'>
       <Overlay

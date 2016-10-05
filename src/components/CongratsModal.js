@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Flex } from 'reflexbox'
 import {
   Overlay,
   Panel,
-  PanelHeader,
-  Close
+  PanelHeader
 } from 'rebass'
 
 class CongratsModal extends Component {
@@ -28,7 +26,8 @@ class CongratsModal extends Component {
       margin: '0 auto',
       fontSize: '2em',
       fontWeight: 'bold',
-      textShadow: '2px 2px 2px black'
+      textShadow: '2px 2px 2px black',
+      fontFamily: 'Roboto'
     }
 
     return <div className='congratsModal'>
