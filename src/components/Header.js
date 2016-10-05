@@ -1,5 +1,13 @@
 import React, { Component } from 'react'
-import { Dropdown, DropdownMenu, Button, NavItem, Arrow, Base } from 'rebass'
+import {
+  Dropdown,
+  DropdownMenu,
+  Button,
+  NavItem,
+  Arrow,
+  Base,
+  Space
+} from 'rebass'
 import { Link, browserHistory } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
@@ -49,6 +57,7 @@ class Header extends Component {
             inverted
             rounded
             onMouseEnter={this.showDropDown}
+            style={{fontFamily: 'FontAwesome', fontWeight: 'normal', fontSize: '1.4em'}}
             >
             Menu
             <Arrow direction='down' />
@@ -81,9 +90,11 @@ class Header extends Component {
         </Dropdown>
         <div className='headlogo' />
         <FontAwesome
-          className='fa fa-cog' name='cog' style={{backgroundColor: '#006494', color: 'white', marginRight: '15px', fontSize: '1.35em'}} onClick={() =>
-          browserHistory.push('/settings')}
-          />
+          className='fa fa-cog'
+          name='cog'
+          style={{backgroundColor: '#006494', color: 'white', marginRight: '15px', fontSize: '1.4em', display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center', marginLeft: '10px'}}
+          onClick={() => browserHistory.push('/settings')}
+          ><Space x={2} />Settings</FontAwesome>
       </Base>
     </div>
   }
