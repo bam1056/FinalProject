@@ -135,7 +135,7 @@ class CurrentTask extends Component {
     const outBoxStyle = {
       backgroundColor: '#61CEED',
       height: '75px',
-      width: '50px',
+      width: '70px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -181,7 +181,7 @@ class CurrentTask extends Component {
       </div>
       <h3 style={{textAlign: 'center', fontFamily: 'Roboto'}}>{this.props.currentTask.description}</h3>
       <div style={{textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '25px auto'}}>
-        <Flex align='center' justify='center' col={4}>
+        <Flex align='center' justify='center' col={5}>
           <div style={outBoxStyle}>
             <div style={inBoxStyle}>
               {this.hours}

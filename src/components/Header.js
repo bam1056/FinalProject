@@ -44,6 +44,18 @@ class Header extends Component {
       height: '75px',
       marginTop: '10px'
     }
+    const settingStyle = {
+      backgroundColor: '#006494',
+      color: 'white',
+      marginRight: '15px',
+      fontSize: '1.4em',
+      display: 'flex',
+      flexDirection: 'row-reverse',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginLeft: '10px',
+      fontWeight: 'normal'
+    }
     return <div className='head1'>
       <Base
         backgroundColor='#006494'
@@ -92,7 +104,7 @@ class Header extends Component {
         <FontAwesome
           className='fa fa-cog'
           name='cog'
-          style={{backgroundColor: '#006494', color: 'white', marginRight: '15px', fontSize: '1.4em', display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center', marginLeft: '10px'}}
+          style={settingStyle}
           onClick={() => browserHistory.push('/settings')}
           ><Space x={2} />Settings</FontAwesome>
       </Base>
