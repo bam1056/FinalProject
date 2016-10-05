@@ -65,6 +65,10 @@ class App extends Component {
       fontWeight: 'bold'
     }
 
+    const spanStyle = {
+      fontFamily: 'Roboto'
+    }
+
     return <div>
       <Header />
       <main style={{paddingBottom: '120px'}}>
@@ -84,14 +88,14 @@ class App extends Component {
             className='list'
             name='list'
             onClick={() => browserHistory.push('/todolist')}
-            >ToDoList
+            ><span style={spanStyle}>ToDoList</span>
           </FontAwesome>
           <FontAwesome
             style={fontAwesomeStyle}
             className='train2'
             name='train'
             onClick={() => browserHistory.push('/get-task')}
-            >GetTask
+            ><span style={spanStyle}>GetTask</span>
           </FontAwesome>
           <FontAwesome
             style={fontAwesomeStyle}
@@ -103,7 +107,7 @@ class App extends Component {
                 return 0
               } else browserHistory.push('/currentTask')
             }}
-            >MyTask
+            ><span style={spanStyle}>MyTask</span>
           </FontAwesome>
         </Flex>
       </Footer>

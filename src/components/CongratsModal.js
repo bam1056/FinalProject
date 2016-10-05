@@ -37,7 +37,7 @@ class CongratsModal extends Component {
         dark
         >
         <Panel theme='primary'>
-          <PanelHeader>
+          <PanelHeader style={{fontFamily: 'Roboto'}}>
               Congrats! You Finished a Task
           </PanelHeader>
           <div style={modalStyle} className='trBG'>

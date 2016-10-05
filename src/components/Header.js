@@ -57,6 +57,11 @@ class Header extends Component {
       marginLeft: '10px',
       fontWeight: 'bold'
     }
+
+    const spanStyle = {
+      fontFamily: 'Roboto'
+    }
+
     return <div className='head1'>
       <Base
         backgroundColor='#006494'
@@ -73,7 +78,7 @@ class Header extends Component {
               onMouseEnter={this.showDropDown}
               style={{fontFamily: 'FontAwesome', fontWeight: 'light', fontSize: '1.4em'}}
               >
-              Menu
+              <span style={spanStyle}>Menu</span>
               <Arrow direction='down' />
             </Button>
             <DropdownMenu
@@ -108,7 +113,7 @@ class Header extends Component {
             name='cog'
             style={settingStyle}
             onClick={() => browserHistory.push('/settings')}
-            ><Space x={2} />Settings</FontAwesome>
+            ><Space x={2} /><span style={spanStyle}>Settings</span></FontAwesome>
         </Flex>
       </Base>
     </div>
