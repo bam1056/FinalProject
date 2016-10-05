@@ -54,7 +54,7 @@ class Header extends Component {
       justifyContent: 'center',
       alignItems: 'center',
       marginLeft: '10px',
-      fontWeight: 'normal'
+      fontWeight: 'bold'
     }
     return <div className='head1'>
       <Base
@@ -69,7 +69,7 @@ class Header extends Component {
             inverted
             rounded
             onMouseEnter={this.showDropDown}
-            style={{fontFamily: 'FontAwesome', fontWeight: 'normal', fontSize: '1.4em'}}
+            style={{fontFamily: 'FontAwesome', fontWeight: 'light', fontSize: '1.4em'}}
             >
             Menu
             <Arrow direction='down' />

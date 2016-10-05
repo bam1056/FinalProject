@@ -66,14 +66,16 @@ class AskForTask extends Component {
     const hStyle = {
       h1: {
         fontSize: '2.5em',
-        textShadow: '2px 2px 2px white',
+        textShadow: '2px 2px 2px #006494',
         fontFamily: 'Raleway',
+        color: '#06CEED',
         textAlign: 'center',
         padding: '10px'
       },
       h2: {
-        textShadow: '2px 2px 2px white',
-        fontFamily: 'Raleway'
+        textShadow: '2px 2px 2px #006494',
+        fontFamily: 'Raleway',
+        color: '#06CEED'
       }
     }
 
@@ -96,9 +98,9 @@ class AskForTask extends Component {
       <h1 style={hStyle.h1}>Ready to Work {this.props.userName}?</h1>
       <br />
       <div className='question' style={questionStyle}>
-        <h3>How much</h3>
+        <h3 style={{fontFamily: 'Roboto'}}>How much</h3>
         <h2 style={hStyle.h2}>TIME</h2>
-        <h3>do you have?</h3>
+        <h3 style={{fontFamily: 'Roboto'}}>do you have?</h3>
       </div>
       <div className='input-container'>
         <Select
@@ -117,7 +119,7 @@ class AskForTask extends Component {
           align='center'
           >
           <Button
-            style={{backgroundColor: '#006494'}}
+            style={{backgroundColor: '#006494', fontFamily: 'Roboto'}}
             children='StreamLine My Schedule'
             onClick={this.getTask}
             />

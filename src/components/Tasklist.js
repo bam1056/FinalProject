@@ -96,7 +96,7 @@ class Tasklist extends Component {
         key={i}
         >
         <PanelHeader
-          style={{backgroundColor: '#006494'}}
+          style={{backgroundColor: '#006494', fontFamily: 'Roboto'}}
           >
           <Flex
             align='center'
@@ -127,8 +127,8 @@ class Tasklist extends Component {
             </Box>
           </Flex>
         </PanelHeader>
-        <Text>{task.description}</Text>
-        <PanelFooter>
+        <Text style={{fontFamily: 'Roboto'}}>{task.description}</Text>
+        <PanelFooter style={{fontFamily: 'Roboto'}}>
           Estimated Time: {task.estimated_duration}min
         </PanelFooter>
       </Panel>

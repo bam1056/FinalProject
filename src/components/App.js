@@ -11,7 +11,7 @@ class App extends Component {
     super()
     this.state = {
       userName: window.sessionStorage.getItem('userName'),
-      currentTask: window.sessionStorage.currentTaskList ? JSON.parse(window.sessionStorage.getItem('currentTaskList'))[0] : {},
+      currentTask: window.sessionStorage.currentTaskList ? JSON.parse(window.sessionStorage.getItem('currentTaskList'))[0] : undefined,
       allTasks: []
     }
   }
@@ -56,6 +56,15 @@ class App extends Component {
       height: '80px',
       paddingBottom: '16px'
     }
+
+    const fontAwesomeStyle = {
+      display: 'flex',
+      flexDirection: 'column',
+      margin: '-15px 10px 0 10px',
+      fontSize: '1.35em',
+      fontWeight: 'bold'
+    }
+
     return <div>
       <Header />
       <main style={{paddingBottom: '120px'}}>
@@ -71,18 +80,23 @@ class App extends Component {
           col={10}
           >
           <FontAwesome
-            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px', fontSize: '1.35em'}} className='list'
+            style={fontAwesomeStyle}
+            className='list'
             name='list'
             onClick={() => browserHistory.push('/todolist')}
             >ToDoList
           </FontAwesome>
           <FontAwesome
-            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px', fontSize: '1.35em'}} className='train2' name='train'
+            style={fontAwesomeStyle}
+            className='train2'
+            name='train'
             onClick={() => browserHistory.push('/get-task')}
             >GetTask
           </FontAwesome>
           <FontAwesome
-            style={{display: 'flex', flexDirection: 'column', margin: '-15px 10px 0 10px', fontSize: '1.35em'}} className='clockFoot' name='clock-o'
+            style={fontAwesomeStyle}
+            className='clockFoot'
+            name='clock-o'
             onClick={() => {
               if (this.state.currentTask === undefined) {
                 this.toggleNoTasksModal(true)

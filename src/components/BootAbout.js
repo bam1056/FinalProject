@@ -11,28 +11,28 @@ class BootAbout extends Component {
           size={150}
           src={person.photoUrl}
           />
-        <h3>{person.name}
+        <h3 style={{fontFamily: 'Roboto'}}>{person.name}
           <Space x={2} />
           <small>
             {person.title}
           </small>
         </h3>
-        <p>{person.quote}</p>
+        <p style={{fontFamily: 'Roboto'}}>{person.quote}</p>
       </div>
     })
     return <div className='boot' style={{overflowY: 'scroll', height: '70vh', padding: '10px'}}>
       <div className='container'>
         <div className='row'>
           <div className='col-lg-12'>
-            <h1 className='page-header'>About Us
+            <h1 className='page-header' style={{fontFamily: 'Raleway'}}>About Us
               <small><Space x={2} />It's Nice to Meet You!</small>
             </h1>
-            <p>Thank you for your interest in StreamLine.We are a young company, interested in improving our customers lives through programming.</p>
+            <p style={{fontFamily: 'Roboto'}}>Thank you for your interest in StreamLine.We are a young company, interested in improving our customers lives through programming.</p>
           </div>
         </div>
         <div className='row'>
           <div className='col-lg-12'>
-            <h2 className='page-header'>Our Team</h2>
+            <h2 className='page-header' style={{fontFamily: 'Raleway'}}>Our Team</h2>
           </div>
           {teamCards}
         </div>

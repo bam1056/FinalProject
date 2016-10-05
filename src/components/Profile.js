@@ -40,12 +40,12 @@ class Profile extends Component {
               <strong>Email:</strong> <small>example@email.com</small>
             </Text>
           </Panel>
-          <Panel>
+          <Panel style={{fontFamily: 'Roboto'}}>
             <Text>
               <strong>Company:</strong> <small>My Favorite Company, LLC</small>
             </Text>
           </Panel>
-          <Panel>
+          <Panel style={{fontFamily: 'Roboto'}}>
             <Text>
               <strong>Bio:</strong> <small>A funloving person with a love for all things code related</small>
             </Text>
