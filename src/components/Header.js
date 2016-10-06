@@ -28,6 +28,7 @@ class Header extends Component {
   }
 
   dismissDropDown = (event) => {
+    console.log('DISMISS')
     this.setState({open: false})
   }
 
@@ -103,11 +104,17 @@ class Header extends Component {
                 to='/about'
                 is={Link}
                 children='About Us'
+                onTouchStart={() => setTimeout(this.dismissDropDown, 300)}
                 />
               <NavItem
                 to='/profile'
                 is={Link}
                 children='Profile'
+                onTouchStart={() => setTimeout(this.dismissDropDown, 300)}
+                />
+              <NavItem
+                children='SignOut'
+                onTouchStart={this.signOut}
                 />
             </DropdownMenu>
           </Dropdown>
