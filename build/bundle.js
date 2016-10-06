@@ -19127,7 +19127,7 @@
 	          align: 'center',
 	          justify: 'center',
 	          col: 6,
-	          style: { width: '300px', margin: '25px auto' }
+	          style: { width: '700px', margin: '25px auto' }
 	        },
 	        _react2.default.createElement(
 	          _reflexbox.Flex,
