@@ -19139,7 +19139,7 @@
 	          _react2.default.createElement(
 	            'h1',
 	            { style: headStyle },
-	            'Settings'
+	            'FEATURE COMING SOON: Settings'
 	          ),
 	          _react2.default.createElement(_rebass.Select, {
 	            style: { width: '200px', fontFamily: 'Roboto' },
