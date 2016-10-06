@@ -34,6 +34,7 @@ class Header extends Component {
   signOut = () => {
     window.sessionStorage.removeItem('userId')
     window.sessionStorage.removeItem('userName')
+    window.sessionStorage.removeItem('token')
     browserHistory.push('/')
   }
 
@@ -90,11 +91,13 @@ class Header extends Component {
                 to='/'
                 is={Link}
                 children='Home'
+                onTouchStart={() => setTimeout(this.dismissDropDown, 300)}
                 />
               <NavItem
                 to='/contact'
                 is={Link}
                 children='Contact Us'
+                onTouchStart={() => setTimeout(this.dismissDropDown, 300)}
                 />
               <NavItem
                 to='/about'

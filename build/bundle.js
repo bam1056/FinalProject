@@ -19142,7 +19142,7 @@
 	            'FEATURE COMING SOON: Settings'
 	          ),
 	          _react2.default.createElement(_rebass.Select, {
-	            style: { minWidth: '400px', maxWidth: '500px', fontFamily: 'Roboto' },
+	            style: { minWidth: '300px', maxWidth: '500px', fontFamily: 'Roboto' },
 	            label: 'DownTime',
 	            name: 'lag',
 	            message: 'How much time do you want to schedule between tasks?',
@@ -19150,7 +19150,7 @@
 	            rounded: true
 	          }),
 	          _react2.default.createElement(_rebass.Select, {
-	            style: { minWidth: '400px', maxWidth: '500px', fontFamily: 'Roboto' },
+	            style: { minWidth: '300px', maxWidth: '500px', fontFamily: 'Roboto' },
 	            label: 'Application Color Theme',
 	            name: 'theme',
 	            message: 'Color theme for app and dialog boxes',
@@ -19158,7 +19158,7 @@
 	            rounded: true
 	          }),
 	          _react2.default.createElement(_rebass.Select, {
-	            style: { minWidth: '400px', maxWidth: '500px', fontFamily: 'Roboto' },
+	            style: { minWidth: '300px', maxWidth: '500px', fontFamily: 'Roboto' },
 	            label: 'Language',
 	            name: 'language',
 	            message: 'Language preference',
