@@ -115,6 +115,7 @@ class Header extends Component {
               <NavItem
                 children='SignOut'
                 onTouchStart={this.signOut}
+                onClick={this.signOut}
                 />
             </DropdownMenu>
           </Dropdown>

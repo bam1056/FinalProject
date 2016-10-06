@@ -18537,6 +18537,7 @@
 	    };
 
 	    _this.dismissDropDown = function (event) {
+	      console.log('DISMISS');
 	      _this.setState({ open: false });
 	    };
 
@@ -18641,12 +18642,22 @@
 	                _react2.default.createElement(_rebass.NavItem, {
 	                  to: '/about',
 	                  is: _reactRouter.Link,
-	                  children: 'About Us'
+	                  children: 'About Us',
+	                  onTouchStart: function onTouchStart() {
+	                    return setTimeout(_this2.dismissDropDown, 300);
+	                  }
 	                }),
 	                _react2.default.createElement(_rebass.NavItem, {
 	                  to: '/profile',
 	                  is: _reactRouter.Link,
-	                  children: 'Profile'
+	                  children: 'Profile',
+	                  onTouchStart: function onTouchStart() {
+	                    return setTimeout(_this2.dismissDropDown, 300);
+	                  }
+	                }),
+	                _react2.default.createElement(_rebass.NavItem, {
+	                  children: 'SignOut',
+	                  onTouchStart: this.signOut
 	                })
 	              )
 	            ),
