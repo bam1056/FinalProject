@@ -21,7 +21,7 @@ class Settings extends Component {
         justify='center'
         flexColumn col={8}
         >
-        <h1 style={headStyle}>Settings</h1>
+        <h1 style={headStyle}>FEATURE COMING SOON: Settings</h1>
         <Select
           style={{width: '200px', fontFamily: 'Roboto'}}
           label='DownTime'
