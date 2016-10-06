@@ -18033,7 +18033,7 @@
 	          _react2.default.createElement(
 	            'a',
 	            { href: 'mailto:brett.macy.codes@gmail.com' },
-	            'Email'
+	            'brett.macy.codes@gmail.com'
 	          ),
 	          ' ',
 	          _react2.default.createElement('br', null),
@@ -18050,7 +18050,7 @@
 	          _react2.default.createElement(
 	            'a',
 	            { href: 'mailto:adkebert@yahoo.com' },
-	            'Email'
+	            'adkebert@yahoo.com'
 	          ),
 	          ' ',
 	          _react2.default.createElement('br', null),
