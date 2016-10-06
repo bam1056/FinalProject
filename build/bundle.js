@@ -18657,7 +18657,8 @@
 	                }),
 	                _react2.default.createElement(_rebass.NavItem, {
 	                  children: 'SignOut',
-	                  onTouchStart: this.signOut
+	                  onTouchStart: this.signOut,
+	                  onClick: this.signOut
 	                })
 	              )
 	            ),
